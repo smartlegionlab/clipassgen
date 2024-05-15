@@ -1,4 +1,4 @@
-# clipassgen
+# clipassgen <sup>v0.5.0</sup>
 
 ***
 
@@ -35,12 +35,6 @@ Author and developer: ___A.A Suvorov___
 ## Images:
 
 ![logo](https://github.com/smartlegionlab/clipassgen/raw/master/data/images/clipassgen.png)
-
-***
-
-## What's new?
-
-### ___clipassgen v0.5.0___
 
 ***
 
