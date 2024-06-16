@@ -1,4 +1,4 @@
-# clipassgen <sup>v0.5.0</sup>
+# clipassgen <sup>v0.5.1</sup>
 
 ***
 
@@ -20,7 +20,7 @@ cryptographically strong, recoverable, smart passwords.
 
 ***
 
-Author and developer: ___A.A Suvorov___
+Author and developer: ___A.A. Suvorov___
 
 ***
 
@@ -121,7 +121,7 @@ It will be impossible to restore it.
     --------------------------------------------------------
     Licensed under the terms of the BSD 3-Clause License
     (see LICENSE for details).
-    Copyright © 2018-2024, A.A Suvorov
+    Copyright © 2018-2024, A.A. Suvorov
     All rights reserved.
     --------------------------------------------------------
 
