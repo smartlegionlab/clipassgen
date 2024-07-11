@@ -1,6 +1,3 @@
 setuptools
 wheel
 twine
-click~=8.0.1
-smartcliapp~=0.4.0
-smartpasslib~=0.4.0

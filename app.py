@@ -4,7 +4,7 @@
 # Copyright © 2018-2024, A.A. Suvorov
 # All rights reserved.
 # --------------------------------------------------------
-# https://github.com/smartlegionlab
+# https://github.com/smartlegionlab/
 # --------------------------------------------------------
 """Console Smart Passwords Generator."""
 from clipassgen.app import cli

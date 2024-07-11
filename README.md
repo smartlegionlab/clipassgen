@@ -1,10 +1,9 @@
-# clipassgen <sup>v0.5.1</sup>
+# clipassgen <sup>v0.6.0</sup>
 
 ***
 
 ## Short Description:
-___clipassgen___ - Cross-platform console utility for generating 
-cryptographically strong, recoverable, smart passwords.
+___clipassgen___ - Console Smart Passwords Generator. Cross-platform console utility for generating cryptographically strong, recoverable, smart passwords.
 
 ***
 
@@ -38,21 +37,34 @@ Author and developer: ___A.A. Suvorov___
 
 ***
 
+## What's new:
+
+- The code has been completely rewritten and improved.
+- Complete renunciation of addictions, even your own. This will allow you to run the application without any problems. 
+    All you need to do is download the source code and run the application. Or install using pip and run.
+- Hidden entry of a secret phrase.
+- Limit on password length from 10 to 1000.
+- Disable the ability to generate smart passwords using command options. 
+  This is done in order to prevent leakage of the secret phrase during generation, 
+  which was specified when generating smart passwords in the console.
+
+> I abandoned the click library, as well as my own dependencies, for the convenience of launching and using the application.
+
+***
+
 ## Description:
 
-___clipassgen___ - Cross-platform console utility for generating 
-cryptographically strong, recoverable, smart passwords.
+___clipassgen___ - Console Smart Passwords Generator.
+
+> Smart passwords are not stored anywhere - they are generated on the fly. For a combination - login + secret phrase, or only using a secret phrase, 
+> you will always receive the same password from 10 to 1000 characters.
+> This is as safe as possible. Your passwords are not stored anywhere, they are generated on the fly when requested.
 
 Possibilities:
 
-- Easy installation using pip;
-- Generation of complex cryptographic passwords directly from the terminal;
-- Generation of common passwords;
-- Generation of smart, recoverable passwords linked to a secret phrase;
-- Generation of smart, recoverable passwords linked to login and secret phrase;
-- Generation from the console using commands and attributes.
-- Interactive menu for generator selection with instant response to input.
-- Characters are not displayed when entering a secret phrase. 
+- Generate smart passwords using the combination: login + secret phrase.
+- Generate smart passwords using a secret phrase.
+- Generate common complex passwords.
 
 Smart Password generator (login + secret phrase):
 
@@ -82,23 +94,13 @@ It will be impossible to restore it.
 ### Install and use:
 
 `pip install clipassgen`
+- `clipassgen`
 
-- Show menu:
-  - `clipassgen`
-  - `python3 clipassgen.py`
-  - or use command `menu`
-  
-- Generate smart password: 
-  - `clipassgen smart -l [name or login] -s [secret phrase] -n [password length]`
-  - `python3 clipassgen.py smart -l [name or login] -s [secret] -n [password length]`
+or:
 
-- Generate normal password: 
-  - `clipassgen normal -s [secret phrase] -n [password length]`
-  - `python3 clipassgen.py normal -s [secret phrase] -n [password length]`
-  
-- Generate default password: 
-  - `clipassgen base -n [password length]`
-  - `python3 clipassgen.py base -n [password length]`
+- Download.
+- Unzip.
+- `python app.py`
 
 ***
 
@@ -124,4 +126,3 @@ It will be impossible to restore it.
     Copyright © 2018-2024, A.A. Suvorov
     All rights reserved.
     --------------------------------------------------------
-
