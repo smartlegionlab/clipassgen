@@ -1,4 +1,4 @@
-# clipassgen <sup>v0.6.0</sup>
+# clipassgen <sup>v0.6.1</sup>
 
 ***
 
@@ -39,16 +39,7 @@ Author and developer: ___A.A. Suvorov___
 
 ## What's new:
 
-- The code has been completely rewritten and improved.
-- Complete renunciation of addictions, even your own. This will allow you to run the application without any problems. 
-    All you need to do is download the source code and run the application. Or install using pip and run.
-- Hidden entry of a secret phrase.
-- Limit on password length from 10 to 1000.
-- Disable the ability to generate smart passwords using command options. 
-  This is done in order to prevent leakage of the secret phrase during generation, 
-  which was specified when generating smart passwords in the console.
-
-> I abandoned the click library, as well as my own dependencies, for the convenience of launching and using the application.
+- Added the ability to launch an application with additional parameters.
 
 ***
 
@@ -89,6 +80,15 @@ It will be impossible to restore it.
 
 ***
 
+> Console manager of smart passwords that are not stored anywhere and are generated on the fly. 
+> Only the public key, login and password length are stored. 
+> You store the smart password under the desired login or just a name, and when received, 
+> enter the secret phrase and receive a generated smart password: [clipassman](https://github.com/smartlegionlab/clipassman/)
+
+> Passwords generated and saved in clipassman will be identical to passwords generated in clipassgen.
+
+***
+
 ## Help:
 
 ### Install and use:
@@ -101,6 +101,9 @@ or:
 - Download.
 - Unzip.
 - `python app.py`
+- `python app.py -l 10`
+- `python app.py -l 10 -s "secret phrase"`
+- `python app.py -l 10 -s "secret phrase" -l "login or name"`
 
 ***
 

@@ -52,6 +52,7 @@ class SmartPrinter:
         print(cls._centered_text_decorator.decorate(text=text, char=main_char))
 
     @classmethod
-    def show_footer(cls, text='', top_char='-', main_char='*'):
-        print(cls._centered_text_decorator.decorate(char=top_char))
-        print(cls._centered_text_decorator.decorate(text=text, char=main_char))
+    def show_footer(cls, url='', copyright_='', top_char='-', main_char='*'):
+        print(cls._centered_text_decorator.decorate(text=url, char=top_char))
+        print(cls._centered_text_decorator.decorate(text=copyright_, char=top_char))
+        print(cls._centered_text_decorator.decorate(char=main_char))

@@ -101,7 +101,5 @@ class AppManager:
         self._continue()
 
     def exit_app(self):
-        self.smart_printer.print_center(text=self.config.url)
-        self.smart_printer.print_center(text=self.config.copyright_)
-        self.smart_printer.print_center(char='*')
+        self.smart_printer.show_footer(url=self.config.url, copyright_=self.config.copyright_)
         sys.exit(0)
