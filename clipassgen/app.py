@@ -32,7 +32,6 @@ def cli():
     login = args.l
     password = ''
     if length is None and secret is None and login is None:
-        app_manager = AppManager()
         app_manager.main_menu()
     elif length is not None and login is not None and secret is None:
         print("Error: -s is required when using -n and -l together.")

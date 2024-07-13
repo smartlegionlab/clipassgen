@@ -1,4 +1,4 @@
-# clipassgen <sup>v0.6.1</sup>
+# clipassgen <sup>v0.6.2</sup>
 
 ***
 
@@ -95,6 +95,8 @@ It will be impossible to restore it.
 
 `pip install clipassgen`
 - `clipassgen`
+
+> On some systems, when running the command `pip install clipassgen` an error occurs, you can solve it like this `pip install clipassgen --break-system-packages`
 
 or:
 
