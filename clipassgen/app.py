@@ -46,7 +46,7 @@ def cli():
         else:
             print("Error: -s should not be empty.")
     elif length is not None and secret is None and login is None:
-        password = app_manager.smart_pass_gen.get_password(length)
+        password = app_manager.pass_gen.generate(length)
     else:
         print("Invalid combination of arguments.")
 

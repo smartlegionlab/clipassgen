@@ -1,4 +1,4 @@
-# clipassgen <sup>v0.6.2</sup>
+# clipassgen <sup>v0.7.0</sup>
 
 ***
 
@@ -39,7 +39,7 @@ Author and developer: ___A.A. Suvorov___
 
 ## What's new:
 
-- Added the ability to launch an application with additional parameters.
+- The default password generator has been improved. Now the password always contains at least 1 lowercase letter, 1 uppercase letter, 1 number and one symbol. Instead of random, the more secure and cryptographically strong secret is used.
 
 ***
 

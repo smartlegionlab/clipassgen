@@ -9,6 +9,7 @@
 import hashlib
 import os
 import random
+import secrets
 import string
 
 
@@ -95,6 +96,30 @@ class RandomStringMaster:
     @classmethod
     def get_random_bytes(cls, size):
         return cls.urandom_gen.generate(size)
+
+
+class PasswordGenerator:
+    upper_letters = string.ascii_uppercase
+    lower_letters = string.ascii_lowercase
+    digits = string.digits
+    symbols = '!@#$%&^_'
+
+    @classmethod
+    def generate(cls, length=10):
+        if length < 4:
+            raise ValueError("The length cannot be less than 4.")
+
+        result = [
+            secrets.choice(cls.upper_letters),
+            secrets.choice(cls.lower_letters),
+            secrets.choice(cls.digits),
+            secrets.choice(cls.symbols),
+        ]
+        result += [
+            secrets.choice(cls.upper_letters + cls.lower_letters + cls.digits + cls.symbols) for _ in range(length - 4)
+        ]
+        secrets.SystemRandom().shuffle(result)
+        return ''.join(result)
 
 
 class BaseSmartPassGen:
