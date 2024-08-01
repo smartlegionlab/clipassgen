@@ -40,6 +40,9 @@ Author and developer: ___A.A. Suvorov___
 ## What's new:
 
 - The default password generator has been improved. Now the password always contains at least 1 lowercase letter, 1 uppercase letter, 1 number and one symbol. Instead of random, the more secure and cryptographically strong secret is used.
+- Bugs fixed.
+- Code optimized.
+- Performance improved.
 
 ***
 
@@ -60,7 +63,7 @@ Possibilities:
 Smart Password generator (login + secret phrase):
 
 Generates a recoverable smart password
-linked to login and secret phrase.
+linked to login or name and secret phrase.
 To generate and restore, you need to remember
 login and secret phrase.
 
@@ -103,9 +106,9 @@ or:
 - Download.
 - Unzip.
 - `python app.py`
-- `python app.py -l 10`
-- `python app.py -l 10 -s "secret phrase"`
-- `python app.py -l 10 -s "secret phrase" -l "login or name"`
+- `python app.py -n 10`
+- `python app.py -n 10 -s "secret phrase"`
+- `python app.py -n 10 -s "secret phrase" -l "login or name"`
 
 ***
 

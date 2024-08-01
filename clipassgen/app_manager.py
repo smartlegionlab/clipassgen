@@ -10,7 +10,7 @@ import getpass
 import sys
 
 from clipassgen.config import Config
-from clipassgen.smart_pass_gen import SmartPasswordMaster, PasswordGenerator
+from clipassgen.smart_pass_gen import PasswordGenerator
 from clipassgen.smart_printer import SmartPrinter
 
 
@@ -19,8 +19,7 @@ class AppManager:
     def __init__(self):
         self.config = Config()
         self.smart_printer = SmartPrinter()
-        self.smart_pass_gen = SmartPasswordMaster()
-        self.pass_gen = PasswordGenerator()
+        self.password_generator = PasswordGenerator()
 
     def main_menu(self):
         self.smart_printer.show_head(text=self.config.name)
@@ -81,20 +80,20 @@ class AppManager:
         login = self._get_login()
         secret = self._get_secret()
         length = self._get_length()
-        password = self.smart_pass_gen.get_smart_password(login, secret, length)
+        password = self.password_generator.get_smart_password(login, secret, length)
         self.show_password(password)
 
     def generate_smart_password(self):
         self.smart_printer.print_center(text='Smart Password')
         secret = self._get_secret()
         length = self._get_length()
-        password = self.smart_pass_gen.get_smart_password(secret=secret, length=length)
+        password = self.password_generator.get_smart_password(secret=secret, length=length)
         self.show_password(password)
 
     def generate_base_password(self):
         self.smart_printer.print_center(text='Base Password')
         length = self._get_length()
-        password = self.pass_gen.generate(length=length)
+        password = self.password_generator.get_password(length=length)
         self.show_password(password)
 
     def show_password(self, password):

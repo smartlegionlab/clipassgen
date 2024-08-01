@@ -37,16 +37,16 @@ def cli():
         print("Error: -s is required when using -n and -l together.")
     elif length is not None and login is not None and secret is not None:
         if login.strip() != "" and secret.strip() != "":
-            password = app_manager.smart_pass_gen.get_smart_password(login, secret, length)
+            password = app_manager.password_generator.get_smart_password(login, secret, length)
         else:
             print('Error! Exemple: python app.py -n 10 -l "login" -s "secret"')
     elif length is not None and secret is not None and login is None:
         if secret.strip() != "":
-            password = app_manager.smart_pass_gen.get_default_password(secret, length)
+            password = app_manager.password_generator.get_default_password(secret, length)
         else:
             print("Error: -s should not be empty.")
     elif length is not None and secret is None and login is None:
-        password = app_manager.pass_gen.generate(length)
+        password = app_manager.password_generator.get_password(length)
     else:
         print("Invalid combination of arguments.")
 
@@ -56,4 +56,3 @@ def cli():
 
 if __name__ == '__main__':
     cli()
-
