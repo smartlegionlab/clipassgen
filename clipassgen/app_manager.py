@@ -87,7 +87,7 @@ class AppManager:
         self.smart_printer.print_center(text='Smart Password')
         secret = self._get_secret()
         length = self._get_length()
-        password = self.password_generator.get_smart_password(secret=secret, length=length)
+        password = self.password_generator.get_default_password(secret=secret, length=length)
         self.show_password(password)
 
     def generate_base_password(self):

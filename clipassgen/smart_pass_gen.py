@@ -121,7 +121,7 @@ class PasswordGenerator:
 
     @staticmethod
     def get_password(length=10):
-        return BasePasswordGenerator.generate(length)
+        return StrongPasswordGenerator.generate(length)
 
     @classmethod
     def get_default_password(cls, secret='', length=10):
