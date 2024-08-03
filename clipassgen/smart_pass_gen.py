@@ -1,11 +1,12 @@
 # --------------------------------------------------------
 # Licensed under the terms of the BSD 3-Clause License
 # (see LICENSE for details).
-# Copyright © 2018-2024, A.A. Suvorov
+# Copyright © 2018-2024, A.A Suvorov
 # All rights reserved.
 # --------------------------------------------------------
 # https://github.com/smartlegionlab/
 # --------------------------------------------------------
+"""Smart Random Generators."""
 import hashlib
 import os
 import random
@@ -15,11 +16,10 @@ import string
 
 class HashGenerator:
     @classmethod
-    def generate(cls, text: str):
+    def generate(cls, text: str) -> str:
         text = str(text)
         sha = hashlib.sha3_512(text.encode('utf-8'))
-        new_hash = sha.hexdigest()
-        return new_hash
+        return sha.hexdigest()
 
 
 class UrandomGenerator:
@@ -29,34 +29,33 @@ class UrandomGenerator:
 
 
 class SmartKeyGenerator:
-    _hash_master = HashGenerator()
 
     @classmethod
     def _create_key(cls, login='', secret='', public_step=15):
-        login_hash = cls._get_hash(text=login)
-        secret_hash = cls._get_hash(text=secret)
-        all_hash = cls._get_hash(text=login_hash + secret_hash)
+        login_hash = cls.get_hash(text=login)
+        secret_hash = cls.get_hash(text=secret)
+        all_hash = cls.get_hash(text=login_hash + secret_hash)
         for _ in range(public_step):
-            temp_hash = cls._get_hash(all_hash)
-            all_hash = cls._get_hash(all_hash + temp_hash + secret_hash)
-        return cls._get_hash(all_hash)
+            temp_hash = cls.get_hash(all_hash)
+            all_hash = cls.get_hash(all_hash + temp_hash + secret_hash)
+        return cls.get_hash(all_hash)
 
     @classmethod
-    def get_public_key(cls, login='', secret=''):
-        return cls._create_key(login, secret, 15)
+    def generate_public_key(cls, login='', secret=''):
+        return cls._create_key(login, secret, 60)
 
     @classmethod
-    def get_private_key(cls, login='', secret=''):
+    def generate_private_key(cls, login='', secret=''):
         return cls._create_key(login, secret, 30)
 
     @classmethod
-    def check_data(cls, login='', secret='', key=''):
-        return cls.get_public_key(login=login, secret=secret) == key
+    def check_key(cls, login='', secret='', key=''):
+        return cls.generate_public_key(login=login, secret=secret) == key
 
     @classmethod
-    def _get_hash(cls, text=''):
+    def get_hash(cls, text=''):
         text = str(text)
-        return cls._hash_master.generate(str(text.encode('utf-8')))
+        return HashGenerator.generate(str(text.encode('utf-8')))
 
 
 class BasePasswordGenerator:
@@ -117,25 +116,29 @@ class SmartPasswordGenerator:
         return UrandomGenerator.generate(size=size)
 
 
-class PasswordGenerator:
+class SmartPasswordMaster:
 
     @staticmethod
-    def get_password(length=10):
+    def generate_base_password(length=10):
+        return BasePasswordGenerator.generate(length)
+
+    @staticmethod
+    def generate_strong_password(length=10):
         return StrongPasswordGenerator.generate(length)
 
     @classmethod
-    def get_default_password(cls, secret='', length=10):
-        return cls.get_smart_password(secret=secret, length=length)
+    def generate_default_smart_password(cls, secret='', length=10):
+        return cls.generate_smart_password(secret=secret, length=length)
 
     @classmethod
-    def get_smart_password(cls, login='', secret='', length=10):
-        seed = SmartKeyGenerator.get_private_key(login, secret)
+    def generate_smart_password(cls, login='', secret='', length=10):
+        seed = SmartKeyGenerator.generate_private_key(login, secret)
         return SmartPasswordGenerator.generate(seed, length=length)
 
     @classmethod
-    def get_public_key(cls, login='', secret=''):
-        return SmartKeyGenerator.get_public_key(login, secret)
+    def generate_public_key(cls, login='', secret=''):
+        return SmartKeyGenerator.generate_public_key(login, secret)
 
     @classmethod
-    def check_data(cls, login, secret, public_key):
-        return SmartKeyGenerator.check_data(login, secret, public_key)
+    def check_public_key(cls, login, secret, public_key):
+        return SmartKeyGenerator.check_key(login, secret, public_key)

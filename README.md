@@ -1,4 +1,4 @@
-# clipassgen <sup>v0.7.1</sup>
+# clipassgen <sup>v0.7.2</sup>
 
 ***
 
@@ -39,7 +39,9 @@ Author and developer: ___A.A. Suvorov___
 
 ## What's new:
 
-- Fixed errors.
+- Fix errors. 
+- Code refactoring.
+- Performance improvement.
 
 ***
 
@@ -83,9 +85,12 @@ It will be impossible to restore it.
 > Console manager of smart passwords that are not stored anywhere and are generated on the fly. 
 > Only the public key, login and password length are stored. 
 > You store the smart password under the desired login or just a name, and when received, 
-> enter the secret phrase and receive a generated smart password: [clipassman](https://github.com/smartlegionlab/clipassman/)
+> enter the secret phrase and receive a generated smart password: [clipassman](https://github.com/smartlegionlab/clipassman/).
 
 > Passwords generated and saved in clipassman will be identical to passwords generated in clipassgen.
+
+
+To create your own smart password generator apps, you can use the library: [smartpasslib](https://github.com/smartlegionlab/smartpasslib/).
 
 ***
 
@@ -94,9 +99,15 @@ It will be impossible to restore it.
 ### Install and use:
 
 `pip install clipassgen`
-- `clipassgen`
 
-> On some systems, when running the command `pip install clipassgen` an error occurs, you can solve it like this `pip install clipassgen --break-system-packages`
+`clipassgen`
+
+On some systems, when running the command `pip install clipassgen` an error occurs, you can solve 
+it like this 
+
+`pip install clipassgen --break-system-packages`
+
+`clipassgen`
 
 or:
 

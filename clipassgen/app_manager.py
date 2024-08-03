@@ -10,36 +10,32 @@ import getpass
 import sys
 
 from clipassgen.config import Config
-from clipassgen.smart_pass_gen import PasswordGenerator
+from clipassgen.smart_pass_gen import SmartPasswordMaster
 from clipassgen.smart_printer import SmartPrinter
 
 
 class AppManager:
-    
-    def __init__(self):
-        self.config = Config()
-        self.smart_printer = SmartPrinter()
-        self.password_generator = PasswordGenerator()
 
-    def main_menu(self):
-        self.smart_printer.show_head(text=self.config.name)
+    @classmethod
+    def main_menu(cls):
+        SmartPrinter.show_head(text=Config.name)
         while True:
-            self.smart_printer.print_center('Main Menu:')
+            SmartPrinter.print_center('Main Menu:')
             print('1. Smart password generator (with login).')
             print('2. Smart password generator.')
             print('3. Base password generator.')
             print('0. Exit.')
             choice = input('Enter your choice: ')
             if choice == '1':
-                self.generate_smart_password_with_login()
+                cls.generate_smart_password()
             elif choice == '2':
-                self.generate_smart_password()
+                cls.generate_default_smart_password()
             elif choice == '3':
-                self.generate_base_password()
+                cls.generate_base_password()
             elif choice == '0':
-                self.exit_app()
+                cls.exit_app()
             else:
-                self.smart_printer.print_framed('Error! Invalid choice')
+                SmartPrinter.print_framed('Error! Invalid choice')
 
     @staticmethod
     def _get_login():
@@ -67,7 +63,7 @@ class AppManager:
                 if not length or (length < 10 or length > 1000):
                     raise ValueError
             except ValueError:
-                print('Invalid length! (10-1000)')
+                print('Invalid length! Minimum length = 10. Maximum length = 1000.')
                 continue
             return length
 
@@ -75,31 +71,36 @@ class AppManager:
     def _continue():
         input('Press enter to continue... ')
 
-    def generate_smart_password_with_login(self):
-        self.smart_printer.print_center(text='Smart Password (with login)')
-        login = self._get_login()
-        secret = self._get_secret()
-        length = self._get_length()
-        password = self.password_generator.get_smart_password(login, secret, length)
-        self.show_password(password)
+    @classmethod
+    def generate_smart_password(cls):
+        SmartPrinter.print_center(text='Smart Password (with login)')
+        login = cls._get_login()
+        secret = cls._get_secret()
+        length = cls._get_length()
+        password = SmartPasswordMaster.generate_smart_password(login, secret, length)
+        cls.show_password(password)
 
-    def generate_smart_password(self):
-        self.smart_printer.print_center(text='Smart Password')
-        secret = self._get_secret()
-        length = self._get_length()
-        password = self.password_generator.get_default_password(secret=secret, length=length)
-        self.show_password(password)
+    @classmethod
+    def generate_default_smart_password(cls):
+        SmartPrinter.print_center(text='Smart Password')
+        secret = cls._get_secret()
+        length = cls._get_length()
+        password = SmartPasswordMaster.generate_default_smart_password(secret=secret, length=length)
+        cls.show_password(password)
 
-    def generate_base_password(self):
-        self.smart_printer.print_center(text='Base Password')
-        length = self._get_length()
-        password = self.password_generator.get_password(length=length)
-        self.show_password(password)
+    @classmethod
+    def generate_base_password(cls):
+        SmartPrinter.print_center(text='Base Password')
+        length = cls._get_length()
+        password = SmartPasswordMaster.generate_strong_password(length=length)
+        cls.show_password(password)
 
-    def show_password(self, password):
+    @classmethod
+    def show_password(cls, password):
         print(f'\n{password}\n')
-        self._continue()
+        cls._continue()
 
-    def exit_app(self):
-        self.smart_printer.show_footer(url=self.config.url, copyright_=self.config.copyright_)
+    @staticmethod
+    def exit_app():
+        SmartPrinter.show_footer(url=Config.url, copyright_=Config.copyright_)
         sys.exit(0)

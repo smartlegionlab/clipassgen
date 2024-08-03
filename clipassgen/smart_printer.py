@@ -35,24 +35,21 @@ class FramedTextDecorator:
 
 class SmartPrinter:
 
-    _centered_text_decorator = CenteredTextDecorator()
-    _framed_text_decorator = FramedTextDecorator()
-
     @classmethod
     def print_center(cls, text='', char='-'):
-        print(cls._centered_text_decorator.decorate(text, char))
+        print(CenteredTextDecorator.decorate(text, char))
 
     @classmethod
     def print_framed(cls, text='', char='-'):
-        print(cls._framed_text_decorator.decorate(text, char))
+        print(FramedTextDecorator.decorate(text, char))
 
     @classmethod
     def show_head(cls, text='', top_char='*', main_char='-'):
-        print(cls._centered_text_decorator.decorate(char=top_char))
-        print(cls._centered_text_decorator.decorate(text=text, char=main_char))
+        print(CenteredTextDecorator.decorate(char=top_char))
+        print(CenteredTextDecorator.decorate(text=text, char=main_char))
 
     @classmethod
     def show_footer(cls, url='', copyright_='', top_char='-', main_char='*'):
-        print(cls._centered_text_decorator.decorate(text=url, char=top_char))
-        print(cls._centered_text_decorator.decorate(text=copyright_, char=top_char))
-        print(cls._centered_text_decorator.decorate(char=main_char))
+        print(CenteredTextDecorator.decorate(text=url, char=top_char))
+        print(CenteredTextDecorator.decorate(text=copyright_, char=top_char))
+        print(CenteredTextDecorator.decorate(char=main_char))
