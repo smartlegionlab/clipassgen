@@ -1,4 +1,4 @@
-# clipassgen <sup>v0.7.2</sup>
+# clipassgen <sup>v0.7.3</sup>
 
 ***
 
@@ -39,9 +39,10 @@ Author and developer: ___A.A. Suvorov___
 
 ## What's new:
 
+__clipassgen__ v0.7.3
+
 - Fix errors. 
 - Code refactoring.
-- Performance improvement.
 
 ***
 

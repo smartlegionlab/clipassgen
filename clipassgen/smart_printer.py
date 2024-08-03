@@ -4,7 +4,7 @@
 # Copyright © 2024, A.A. Suvorov
 # All rights reserved.
 # --------------------------------------------------------
-# https://github.com/smartlegionlab//
+# https://github.com/smartlegionlab/
 # --------------------------------------------------------
 import shutil
 
@@ -12,9 +12,9 @@ import shutil
 class CenteredTextDecorator:
 
     @classmethod
-    def decorate(cls, text='', char=''):
+    def decorate(cls, text='', symbol=''):
         columns = cls._get_term_width()
-        symbol = ' ' if not char else char
+        symbol = ' ' if not symbol else symbol
         msg = (f' {text} ' if text else '').center(columns, symbol[0])
         return msg
 
@@ -26,30 +26,30 @@ class CenteredTextDecorator:
 class FramedTextDecorator:
 
     @classmethod
-    def decorate(cls, text='', top_char='-', bottom_char='-'):
+    def decorate(cls, text='', top_symbol='-', bottom_symbol='-'):
         text_len = len(text)
-        top_text = top_char * text_len
-        bottom_text = bottom_char * text_len
+        top_text = top_symbol * text_len
+        bottom_text = bottom_symbol * text_len
         return f'{top_text}\n{text}\n{bottom_text}'
 
 
 class SmartPrinter:
 
     @classmethod
-    def print_center(cls, text='', char='-'):
-        print(CenteredTextDecorator.decorate(text, char))
+    def print_center(cls, text='', symbol='-'):
+        print(CenteredTextDecorator.decorate(text, symbol))
 
     @classmethod
-    def print_framed(cls, text='', char='-'):
-        print(FramedTextDecorator.decorate(text, char))
+    def print_framed(cls, text='', symbol='-'):
+        print(FramedTextDecorator.decorate(text, symbol))
 
     @classmethod
-    def show_head(cls, text='', top_char='*', main_char='-'):
-        print(CenteredTextDecorator.decorate(char=top_char))
-        print(CenteredTextDecorator.decorate(text=text, char=main_char))
+    def show_head(cls, text='', top_symbol='*', main_symbol='-'):
+        print(CenteredTextDecorator.decorate(symbol=top_symbol))
+        print(CenteredTextDecorator.decorate(text=text, symbol=main_symbol))
 
     @classmethod
-    def show_footer(cls, url='', copyright_='', top_char='-', main_char='*'):
-        print(CenteredTextDecorator.decorate(text=url, char=top_char))
-        print(CenteredTextDecorator.decorate(text=copyright_, char=top_char))
-        print(CenteredTextDecorator.decorate(char=main_char))
+    def show_footer(cls, url='', copyright_='', top_symbol='-', main_symbol='*'):
+        print(CenteredTextDecorator.decorate(text=url, symbol=top_symbol))
+        print(CenteredTextDecorator.decorate(text=copyright_, symbol=top_symbol))
+        print(CenteredTextDecorator.decorate(symbol=main_symbol))

@@ -46,9 +46,12 @@ class AppManager:
             return login
 
     @staticmethod
-    def _get_secret():
+    def _get_secret(security_flag=True):
         while True:
-            secret = getpass.getpass("Enter secret phrase (hidden): ")
+            if security_flag:
+                secret = getpass.getpass("Enter secret phrase (hidden): ")
+            else:
+                secret = input('Enter secret phrase (hidden): ')
             if not secret:
                 print('No secret phrase entered!')
                 continue
