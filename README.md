@@ -7,7 +7,6 @@ ___clipassgen___ - Console Smart Passwords Generator. Cross-platform console uti
 
 ***
 
-[![PyPI Downloads](https://static.pepy.tech/badge/clipassgen)](https://pepy.tech/projects/clipassgen)
 ![GitHub top language](https://img.shields.io/github/languages/top/smartlegionlab/clipassgen)
 [![PyPI - Downloads](https://img.shields.io/pypi/dm/clipassgen?label=pypi%20downloads)](https://pypi.org/project/clipassgen/)
 [![GitHub release (latest by date)](https://img.shields.io/github/v/release/smartlegionlab/clipassgen)](https://github.com/smartlegionlab/clipassgen/)
@@ -17,6 +16,10 @@ ___clipassgen___ - Console Smart Passwords Generator. Cross-platform console uti
 [![GitHub Repo stars](https://img.shields.io/github/stars/smartlegionlab/clipassgen?style=social)](https://github.com/smartlegionlab/clipassgen/)
 [![GitHub watchers](https://img.shields.io/github/watchers/smartlegionlab/clipassgen?style=social)](https://github.com/smartlegionlab/clipassgen/)
 [![GitHub forks](https://img.shields.io/github/forks/smartlegionlab/clipassgen?style=social)](https://github.com/smartlegionlab/clipassgen/)
+
+[![PyPI Downloads](https://static.pepy.tech/badge/clipassgen)](https://pepy.tech/projects/clipassgen)
+[![PyPI Downloads](https://static.pepy.tech/badge/clipassgen/month)](https://pepy.tech/projects/clipassgen)
+[![PyPI Downloads](https://static.pepy.tech/badge/clipassgen/week)](https://pepy.tech/projects/clipassgen)
 
 ***
 
