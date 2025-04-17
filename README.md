@@ -7,6 +7,7 @@ ___clipassgen___ - Console Smart Passwords Generator. Cross-platform console uti
 
 ***
 
+[![PyPI Downloads](https://static.pepy.tech/badge/clipassgen)](https://pepy.tech/projects/clipassgen)
 ![GitHub top language](https://img.shields.io/github/languages/top/smartlegionlab/clipassgen)
 [![PyPI - Downloads](https://img.shields.io/pypi/dm/clipassgen?label=pypi%20downloads)](https://pypi.org/project/clipassgen/)
 [![GitHub release (latest by date)](https://img.shields.io/github/v/release/smartlegionlab/clipassgen)](https://github.com/smartlegionlab/clipassgen/)
