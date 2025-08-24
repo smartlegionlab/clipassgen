@@ -1,0 +1,40 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "clipassgen"
+version = "0.7.5"
+description = " Console Smart Passwords Generator. Cross-platform console utility for generating cryptographically strong, recoverable, smart passwords."
+authors = [
+    {name = "A.A Suvorov", email = "smartlegiondev@gmail.com"}
+]
+license = "BSD-3-Clause OR LicenseRef-Commercial"
+readme = "README.md"
+requires-python = ">=3.6"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Operating System :: OS Independent",
+    "Topic :: Security",
+    "Topic :: Security :: Cryptography",
+    "Intended Audience :: End Users/Desktop",
+    "Environment :: Console",
+]
+dependencies = [
+
+]
+
+[project.urls]
+Homepage = "https://github.com/smartlegionlab/clipassgen"
+
+[tool.setuptools.packages.find]
+where = ["."]
+
+[project.scripts]
+clipassgen = "clipassgen.app:cli"
