@@ -1,6 +1,10 @@
-BSD 3-Clause License
+DUAL LICENSING
 
-Copyright (c) 2024, A.A. Suvorov
+This software is available under a choice of two licenses:
+
+OPTION 1: BSD 3-CLAUSE LICENSE (for non-commercial use)
+---------------------------------------------------------------------
+Copyright (c) 2025, A.A. Suvorov
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are met:
@@ -26,3 +30,22 @@ SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
 CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
 OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+OPTION 2: COMMERCIAL LICENSE
+---------------------------------
+For commercial use, inclusion in proprietary products, or closed source distribution, you must purchase a
+commercial license.
+
+Commercial license terms:
+- Right to use in commercial products
+- Technical support
+- Possibility of making proprietary modifications
+- No requirement to disclose source code
+
+For commercial licensing terms, contact:
+Email: smartlegiondev@gmail.com
+
+CHOICE OF LICENSE
+-------------
+By using this software, you automatically agree to the terms of the
+BSD 3-Clause License, unless you purchase a commercial license.

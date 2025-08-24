@@ -1,4 +1,4 @@
-# clipassgen <sup>v0.7.4</sup>
+# clipassgen <sup>v0.7.5</sup>
 
 ***
 
@@ -43,7 +43,7 @@ Author and developer: ___A.A. Suvorov___
 
 ## What's new:
 
-__clipassgen__ v0.7.4
+__clipassgen__ v0.7.5
 
 - Fix errors. 
 - Code refactoring.
@@ -125,6 +125,24 @@ or:
 
 ***
 
+## 📜 Licensing
+
+This project uses a dual licensing system:
+
+### 🆓 BSD 3-Clause License
+- For non-commercial use
+- For academic and research purposes
+- For open-source projects
+
+### 💼 Commercial License
+- For commercial products and services
+- For enterprises using the code in proprietary solutions
+- For additional features and support
+
+**To obtain a commercial license:** [smartlegiondev@gmail.com](mailto:smartlegiondev@gmail.com)
+
+---
+
 ## Disclaimer of liability:
 
     THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
@@ -137,13 +155,3 @@ or:
     CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
     OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
     OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-
-***
-
-## Copyright:
-    --------------------------------------------------------
-    Licensed under the terms of the BSD 3-Clause License
-    (see LICENSE for details).
-    Copyright © 2018-2024, A.A. Suvorov
-    All rights reserved.
-    --------------------------------------------------------
