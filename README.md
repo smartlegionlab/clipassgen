@@ -1,4 +1,4 @@
-# clipassgen <sup>v0.7.6</sup>
+# clipassgen <sup>v0.7.7</sup>
 
 ***
 
@@ -116,25 +116,18 @@ or:
 
 ***
 
-## 📜 Licensing
+## 📜 License & Disclaimer
 
-This project is offered under a dual-licensing model.
+This project is licensed under the **GNU Affero General Public License v3.0 (AGPLv3)**.
 
-### 🆓 Option 1: BSD 3-Clause License (for Non-Commercial Use)
-This license is **free of charge** and allows you to use the software for:
-- Personal and educational purposes
-- Academic research and open-source projects
-- Evaluation and testing
+- You are free to use, modify, and distribute this software.
+- **However, if you modify this software and run it as a hosted service (e.g., a web app), you MUST make the full source code of your modified version available to your users under the same license.**
+- The full license text can be found in the [LICENSE](https://github.com/smartlegionlab/clipassgen/blob/master/LICENSE) file.
 
-**Important:** Any use by a commercial organization or for commercial purposes (including internal development and prototyping) requires a commercial license.
+### ⚠️ Important Disclaimer
 
-### 💼 Option 2: Commercial License (for Commercial Use)
-A commercial license is **required** for:
-- Integrating this software into proprietary products
-- Using it in internal operations within a company
-- SaaS and hosted services that incorporate this software
+> **THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.**
+>
+> *(This is a summary of the full disclaimer, which is legally binding and located in sections 15 and 16 of the AGPLv3 license).*
 
-**Important:** The commercial license provides usage rights but **does not include any indemnification or liability**. The software is provided "AS IS" without any warranties as described in the full license agreement.
-
-**To obtain a commercial license,** please contact us directly at:  
-📧 **smartlegiondev@gmail.com**
+For commercial use that is not compatible with the AGPLv3 terms (e.g., including this software in a proprietary product without disclosing the source code), a **commercial license** is required. Please contact me at [smartlegiondev@gmail.com](mailto:smartlegiondev@gmail.com) to discuss terms.
