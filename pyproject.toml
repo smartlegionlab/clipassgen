@@ -22,7 +22,6 @@ classifiers = [
     "Programming Language :: Python :: 3.12",
     "Operating System :: OS Independent",
     "Topic :: Security",
-    "Topic :: Security :: Cryptography",
     "Intended Audience :: End Users/Desktop",
     "Environment :: Console",
 ]

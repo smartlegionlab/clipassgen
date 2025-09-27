@@ -1,5 +1,11 @@
 # clipassgen <sup>v1.2.0</sup>
 
+---
+
+> Note: This is a production-ready password manager. For academic research on the underlying security paradigm, see [The Pointer-Based Security Paradigm](https://doi.org/10.5281/zenodo.17204738).
+
+---
+
 [![GitHub top language](https://img.shields.io/github/languages/top/smartlegionlab/clipassgen)](https://github.com/smartlegionlab/clipassgen)
 [![PyPI - Downloads](https://img.shields.io/pypi/dm/clipassgen?label=pypi%20downloads)](https://pypi.org/project/clipassgen/)
 [![GitHub release](https://img.shields.io/github/v/release/smartlegionlab/clipassgen)](https://github.com/smartlegionlab/clipassgen/)
