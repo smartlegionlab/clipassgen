@@ -1,4 +1,4 @@
-# clipassgen <sup>v1.1.1</sup>
+# clipassgen <sup>v1.1.2</sup>
 
 [![GitHub top language](https://img.shields.io/github/languages/top/smartlegionlab/clipassgen)](https://github.com/smartlegionlab/clipassgen)
 [![PyPI - Downloads](https://img.shields.io/pypi/dm/clipassgen?label=pypi%20downloads)](https://pypi.org/project/clipassgen/)
@@ -85,7 +85,6 @@ clipassgen -n 12
 # Generate multiple passwords for different services
 clipassgen -l "github" -s "main_secret" -n 20
 clipassgen -l "email" -s "main_secret" -n 18
-clipassgen -l "banking" -s "main_secret" -n 22
 ```
 
 ### Integration with Scripts
