@@ -4,10 +4,10 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "clipassgen"
-version = "1.2.0"
-description = " Console Smart Passwords Generator. Cross-platform console utility for generating cryptographically strong, recoverable, smart passwords."
+version = "2.0.0"
+description = "clipassgen (Console Smart Password Generator CLI) - Command-line smart password generator for deterministic password generation - same secret always produces the same password."
 authors = [
-    {name = "A.A Suvorov", email = "smartlegiondev@gmail.com"}
+    {name = "Alexander Suvorov", email = "smartlegiondev@gmail.com"}
 ]
 license = "BSD-3-Clause"
 readme = "README.md"

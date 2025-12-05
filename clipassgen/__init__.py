@@ -1,6 +1,6 @@
 # Copyright © 2025, Alexander Suvorov
 """
-Console Smart Passwords Generator. Cross-platform console utility for
-generating cryptographically strong, recoverable, smart passwords.
+clipassgen (Console Smart Password Generator CLI) - Command-line smart password generator for
+deterministic password generation - same secret always produces the same password.
 """
-__version__ = '1.2.0'
+__version__ = '2.0.0'

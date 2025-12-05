@@ -4,47 +4,57 @@ import argparse
 import sys
 
 from clipassgen.app_manager import AppManager
-from clipassgen.smart_pass_gen import SmartPasswordMaster
+from smartpasslib import SmartPasswordMaster
 
 
 def cli():
-    parser = argparse.ArgumentParser(description='Console Smart Passwords Generator.')
-    parser.add_argument('-n', type=int, help='Number from 10 to 1000', default=None)
-    parser.add_argument('-s', type=str, help='Secret phrase')
-    parser.add_argument('-l', type=str, help='Login')
+    parser = argparse.ArgumentParser(description='Console Smart Passwords Generator v2.0.0')
+
+    parser.add_argument('-l', '--length', type=int, help='Password length (4-1000)', default=12)
+    parser.add_argument('-s', '--secret', type=str, help='Secret phrase for smart password')
+
+    parser.add_argument('--smart', action='store_true', help='Generate smart password from secret')
+    parser.add_argument('--strong', action='store_true', help='Generate strong random password')
+    parser.add_argument('--base', action='store_true', help='Generate base random password')
+    parser.add_argument('--code', action='store_true', help='Generate authentication code')
 
     args = parser.parse_args()
 
-    length = args.n
+    if args.length < 4 or args.length > 1000:
+        print("Error: Length must be between 4 and 1000")
+        sys.exit(1)
 
-    if length and not (10 <= length <= 1000):
-        print("Error: -n should be a number between 10 and 1000.")
-        sys.exit(0)
-
-    secret = args.s
-    login = args.l
-    password = ''
-    if length is None and secret is None and login is None:
+    if not any([args.smart, args.strong, args.base, args.code]) and not args.secret:
         AppManager.main_menu()
-    elif length is not None and login is not None and secret is None:
-        print("Error: -s is required when using -n and -l together.")
-    elif length is not None and login is not None and secret is not None:
-        if login.strip() != "" and secret.strip() != "":
-            password = SmartPasswordMaster.generate_smart_password(login, secret, length)
-        else:
-            print('Error! Exemple: python app.py -n 10 -l "login" -s "secret"')
-    elif length is not None and secret is not None and login is None:
-        if secret.strip() != "":
-            password = SmartPasswordMaster.generate_default_smart_password(secret, length)
-        else:
-            print("Error: -s should not be empty.")
-    elif length is not None and secret is None and login is None:
-        password = SmartPasswordMaster.generate_strong_password(length)
+        return
+
+    password = ''
+
+    if args.smart and args.secret:
+        password = SmartPasswordMaster.generate_smart_password(
+            secret=args.secret,
+            length=args.length
+        )
+
+    elif args.strong:
+        password = SmartPasswordMaster.generate_strong_password(args.length)
+
+    elif args.base:
+        password = SmartPasswordMaster.generate_base_password(args.length)
+
+    elif args.code:
+        password = SmartPasswordMaster.generate_code(args.length)
+
     else:
-        print("Invalid combination of arguments.")
+        print("Error: Invalid arguments")
+        print("Examples:")
+        print("  clipassgen --smart -s 'mysecret' -l 16")
+        print("  clipassgen --strong -l 20")
+        print("  clipassgen --code -l 8")
+        sys.exit(1)
 
     if password:
-        print(f'{password}')
+        print(password)
 
 
 if __name__ == '__main__':
