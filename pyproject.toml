@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "clipassgen"
-version = "2.0.0"
-description = "clipassgen (Console Smart Password Generator CLI) - Command-line smart password generator for deterministic password generation - same secret always produces the same password."
+version = "2.1.0"
+description = "clipassgen (Console Smart Password Generator CLI) - Terminal-based smart password generator with deterministic password generation. Generate passwords from secret phrases - same secret always produces the same password, no storage required."
 authors = [
     {name = "Alexander Suvorov", email = "smartlegiondev@gmail.com"}
 ]

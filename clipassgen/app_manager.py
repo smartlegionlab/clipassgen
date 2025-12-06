@@ -11,7 +11,7 @@ class AppManager:
 
     @classmethod
     def main_menu(cls):
-        SmartPrinter.show_head(text=f"{Config.name} v2.0.0")
+        SmartPrinter.show_head(text=f"{Config.name} v2.1.0")
         cls._show_warning()
 
         while True:
@@ -40,7 +40,7 @@ class AppManager:
     @staticmethod
     def _show_warning():
         print("\n" + "=" * 60)
-        print("⚠️  CLIPASSGEN v2.0.0")
+        print("⚠️  CLIPASSGEN v2.1.0")
         print("=" * 60)
         print("• Login parameter removed")
         print("• All v1.x passwords are INVALID")

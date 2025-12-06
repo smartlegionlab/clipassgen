@@ -52,6 +52,25 @@ class SmartPassword:
         """
         return self._length
 
+    def update(self, description: str = None, length: int = None) -> None:
+        """
+        Update password metadata (description and/or length).
+
+        Args:
+            description: New service/account description (optional)
+            length: New password length (optional, must be >= 1)
+
+        Raises:
+            ValueError: If length is provided and less than 1
+        """
+        if description is not None:
+            self._description = description
+
+        if length is not None:
+            if length < 1:
+                raise ValueError("Password length must be at least 1 character")
+            self._length = length
+
     def to_dict(self) -> Dict[str, str | int]:
         """
         Convert to dictionary for serialization.

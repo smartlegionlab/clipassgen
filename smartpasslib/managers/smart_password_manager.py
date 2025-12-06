@@ -112,6 +112,29 @@ class SmartPasswordManager:
         """
         return self.smart_passwords.get(public_key)
 
+    def update_smart_password(self, public_key: str, description: str = None, length: int = None) -> bool:
+        """
+        Update metadata of an existing smart password.
+
+        Args:
+            public_key: Public key of the password to update
+            description: New description (optional)
+            length: New password length (optional)
+
+        Returns:
+            bool: True if update was successful, False if password not found
+
+        Raises:
+            ValueError: If length is provided and less than 1
+        """
+        password = self.get_smart_password(public_key)
+        if password is None:
+            return False
+
+        password.update(description=description, length=length)
+        self._write_data()
+        return True
+
     def delete_smart_password(self, public_key: str):
         """
         Delete smart password metadata by public key.

@@ -8,7 +8,7 @@ from smartpasslib import SmartPasswordMaster
 
 
 def cli():
-    parser = argparse.ArgumentParser(description='Console Smart Passwords Generator v2.0.0')
+    parser = argparse.ArgumentParser(description='Console Smart Passwords Generator v2.1.0')
 
     parser.add_argument('-l', '--length', type=int, help='Password length (4-1000)', default=12)
     parser.add_argument('-s', '--secret', type=str, help='Secret phrase for smart password')
