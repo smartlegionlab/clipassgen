@@ -320,7 +320,6 @@ pip install pyinstaller
 #### Step 6: Build Executable
 ```cmd
 # Build single .exe file
-pyinstaller --onefile --name "clipassgen.exe" clipassgen/__main__.py
 pyinstaller --onefile --console --name "clipassgen.exe" --additional-hooks-dir=. app.py
 
 # Wait for build to complete (1-2 minutes)
