@@ -74,7 +74,7 @@ Generate passwords from secret phrases - same secret always produces the same pa
 
 ## 🔬 Technical Foundation
 
-Powered by **[smartpasslib v2.1.2+](https://github.com/smartlegionlab/smartpasslib)** - The core library for deterministic password generation.
+Powered by **[smartpasslib v2.1.0+](https://github.com/smartlegionlab/smartpasslib)** - The core library for deterministic password generation.
 
 **Key principle**: Instead of storing passwords, you store verification metadata. The actual password is regenerated on-demand from your secret phrase.
 
