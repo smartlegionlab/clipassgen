@@ -1,4 +1,4 @@
-# CLIPassGen (Console Smart Password Generator) <sup>v2.1.0</sup>
+# CLIPassGen (Console Smart Password Generator) <sup>v2.1.1</sup>
 
 ---
 
@@ -74,7 +74,7 @@ Generate passwords from secret phrases - same secret always produces the same pa
 
 ## 🔬 Technical Foundation
 
-Powered by **[smartpasslib v2.1.0+](https://github.com/smartlegionlab/smartpasslib)** - The core library for deterministic password generation.
+Powered by **[smartpasslib v2.1.1+](https://github.com/smartlegionlab/smartpasslib)** - The core library for deterministic password generation.
 
 **Key principle**: Instead of storing passwords, you store verification metadata. The actual password is regenerated on-demand from your secret phrase.
 
@@ -92,11 +92,11 @@ Powered by **[smartpasslib v2.1.0+](https://github.com/smartlegionlab/smartpassl
 
 ---
 
-## 🆕 What's New in v2.1.0
+## 🆕 What's New in v2.1.1
 
 ### ⚠️ **BREAKING CHANGES WARNING**
 
-**CRITICAL**: v2.1.0 is **NOT** backward compatible with v1.x. All passwords generated with v1.x are now **INVALID**. You must generate new passwords using your secret phrases.
+**CRITICAL**: v2.1.1 is **NOT** backward compatible with v1.x. All passwords generated with v1.x are now **INVALID**. You must generate new passwords using your secret phrases.
 
 ### Major Improvements:
 
@@ -134,9 +134,9 @@ Powered by **[smartpasslib v2.1.0+](https://github.com/smartlegionlab/smartpassl
 
 **Migration Required:**
 ```bash
-# Important: v1.x passwords cannot be regenerated with v2.1.0
+# Important: v1.x passwords cannot be regenerated with v2.1.1
 # Step 1: Recover old passwords using v1.x if needed
-# Step 2: Generate new passwords with v2.1.0
+# Step 2: Generate new passwords with v2.1.1
 # Step 3: Update all service credentials
 # Step 4: Securely delete old password records
 ```
@@ -203,11 +203,6 @@ clipassgen --help
 # Clone repository
 git clone https://github.com/smartlegionlab/clipassgen.git
 cd clipassgen
-
-# Install in development mode
-pip install -e .
-
-# Or install from local source
 pip install .
 ```
 
@@ -225,22 +220,13 @@ clipassgen
 **Interactive Menu:**
 ```
 ********************************************************************************
-------------------- Console Smart Password Generator v2.1.0 --------------------
-
-============================================================
-⚠️  CLIPASSGEN v2.1.0
-============================================================
-• Login parameter removed
-• All v1.x passwords are INVALID
-• Only secret phrase needed
-============================================================
-
-Press Enter to continue...
+------------------- Console Smart Password Generator v2.1.1 --------------------
 ---------------------------------- Main Menu: ----------------------------------
 1. Smart Password (from secret)
 2. Strong Random Password
 3. Base Random Password
 4. Authentication Code
+5. Help
 0. Exit
 Enter your choice: 
 
@@ -277,6 +263,91 @@ clipassgen --code -l 8
 # For CLI mode, generate password first, then use smartpasslib directly
 # to generate public key from the same secret
 ```
+
+---
+
+## 📦 Windows Standalone Executable
+
+### Creating a Single-File *.exe
+
+Build a standalone `clipassgen.exe` that runs without Python installation:
+
+#### Step 1: Get the Project Files
+1. **Download project ZIP:**
+   - Go to: https://github.com/smartlegionlab/clipassgen
+   - Click green "Code" button
+   - Select "Download ZIP"
+   - Extract to: `C:\clipassgen\`
+
+2. **Or clone with git (if installed):**
+   ```cmd
+   git clone https://github.com/smartlegionlab/clipassgen.git
+   cd clipassgen
+   ```
+
+#### Step 2: Install Python
+1. Download Python installer from: https://python.org/downloads/
+2. Run installer
+3. **IMPORTANT:** Check ✅ "Add Python to PATH"
+4. Click "Install Now"
+
+#### Step 3: Open Command Prompt
+1. Press `Win + R`
+2. Type `cmd`, press Enter
+3. Navigate to project folder:
+   ```cmd
+   cd C:\clipassgen
+   ```
+
+#### Step 4: Create Virtual Environment
+```cmd
+# Create virtual environment
+python -m venv venv
+
+# Activate it (IMPORTANT!)
+.\venv\Scripts\activate
+
+# You should see (venv) in your command prompt
+```
+
+#### Step 5: Install Dependencies
+```cmd
+# Install PyInstaller in virtual environment
+pip install pyinstaller
+
+```
+
+#### Step 6: Build Executable
+```cmd
+# Build single .exe file
+pyinstaller --onefile --name "clipassgen.exe" clipassgen/__main__.py
+pyinstaller --onefile --console --name "clipassgen.exe" --additional-hooks-dir=. app.py
+
+# Wait for build to complete (1-2 minutes)
+```
+
+#### Step 7: Find and Use
+**Location:** `C:\clipassgen\dist\clipassgen.exe`
+
+**Create desktop shortcut:**
+1. Open `C:\clipassgen\dist\` folder
+2. Right-click `clipassgen.exe`
+3. Select "Create shortcut"
+4. Drag shortcut to desktop
+5. Rename shortcut to "CLIPassGen"
+6. Double-click to start
+
+**Run from command line:**
+```cmd
+C:\clipassgen\dist\clipassgen.exe --help
+C:\clipassgen\dist\clipassgen.exe --smart -s "mysecret" -l 16
+```
+
+**What you get:**
+- Single file: `clipassgen.exe` (~15MB)
+- No Python required to run
+- Works on any Windows 10/11 PC
+- Can be copied to USB drive
 
 ---
 
@@ -524,7 +595,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 ## ⚠️ Security Warnings
 
-**Version Incompatibility**: v2.1.0 passwords are incompatible with v1.x.
+**Version Incompatibility**: v2.1.1 passwords are incompatible with v1.x.
 Never mix secret phrases across different versions.
 
 ### Secret Phrase Security
@@ -595,42 +666,30 @@ Usage of this software constitutes your **FULL AND UNCONDITIONAL ACCEPTANCE** of
 
 ---
 
-**Version**: 2.1.0 | [**Author**](https://smartlegionlab.ru): [Alexander Suvorov](https://alexander-suvorov.ru)
+**Version**: 2.1.1 | [**Author**](https://smartlegionlab.ru): [Alexander Suvorov](https://alexander-suvorov.ru)
 
 ---
 
-**Note**: This is v2.1.0. If migrating from v1.x, all passwords must be regenerated with new secret phrases.
+**Note**: This is v2.1.1. If migrating from v1.x, all passwords must be regenerated with new secret phrases.
 
 ---
 
 ## Terminal Interface Examples
 
-### Interactive Mode Startup
+![smartpassgen](https://github.com/smartlegionlab/smartpassgen/blob/master/data/images/smartpassgen.png)
+
+### Smart Password Generation Flow
 ```
 ********************************************************************************
-------------------- Console Smart Password Generator v2.1.0 --------------------
-
-============================================================
-⚠️  CLIPASSGEN v2.1.0
-============================================================
-• Login parameter removed
-• All v1.x passwords are INVALID
-• Only secret phrase needed
-============================================================
-
-Press Enter to continue...
+------------------- Console Smart Password Generator v2.1.1 --------------------
 ---------------------------------- Main Menu: ----------------------------------
 1. Smart Password (from secret)
 2. Strong Random Password
 3. Base Random Password
 4. Authentication Code
+5. Help
 0. Exit
-Enter your choice: 
-
-```
-
-### Smart Password Generation Flow
-```
+Enter your choice: 1
 --------------------------- Smart Password Generator ---------------------------
 
 Generates password from your secret phrase.
@@ -638,13 +697,13 @@ Same secret + same length = same password every time.
 
 Enter secret phrase (hidden): 
 Confirm secret phrase (hidden): 
-Enter length [4-1000] (default 16): 24
+Enter length [4-1000] (default 16): 16
 -------------------
 Generated Password:
 -------------------
-wcJjBKIhsgV%!6IqCH!^7%dL
+wcJjBKIhsgV%!6Iq
 
-Length: 24 characters
+Length: 16 characters
 
 Press Enter to continue... 
 ------------------------------
@@ -660,14 +719,15 @@ Press Enter to continue...
 2. Strong Random Password
 3. Base Random Password
 4. Authentication Code
+5. Help
 0. Exit
 Enter your choice: 2
 -------------------------- Strong Password Generator ---------------------------
-Enter length [4-1000] (default 16): 
+Enter length [4-1000] (default 16): 16
 -------------------
 Generated Password:
 -------------------
-uNin&90COmLuIjkX
+I^wiCnKbM6P&87Ow
 
 Length: 16 characters
 
@@ -677,16 +737,17 @@ Press Enter to continue...
 2. Strong Random Password
 3. Base Random Password
 4. Authentication Code
+5. Help
 0. Exit
 Enter your choice: 3
 --------------------------- Base Password Generator ----------------------------
-Enter length [4-1000] (default 12): 15
+Enter length [4-1000] (default 12): 12
 -------------------
 Generated Password:
 -------------------
-UQf0uVkxLMMVwwb
+_exe$bSNA4hn
 
-Length: 15 characters
+Length: 12 characters
 
 Press Enter to continue... 
 ---------------------------------- Main Menu: ----------------------------------
@@ -694,6 +755,7 @@ Press Enter to continue...
 2. Strong Random Password
 3. Base Random Password
 4. Authentication Code
+5. Help
 0. Exit
 Enter your choice: 4
 ------------------------ Authentication Code Generator -------------------------
@@ -701,7 +763,7 @@ Enter length [4-20] (default 8): 8
 -------------------
 Generated Password:
 -------------------
-li2@N6k2
+fGa80P3@
 
 Length: 8 characters
 
@@ -711,6 +773,27 @@ Press Enter to continue...
 2. Strong Random Password
 3. Base Random Password
 4. Authentication Code
+5. Help
+0. Exit
+Enter your choice: 5
+------------------------------------- Help -------------------------------------
+-----------------
+CLIPASSGEN v2.1.1
+-----------------
+WARNING: 
+• Login parameter removed
+• All v1.x passwords are INVALID
+• Only secret phrase needed
+For more information, visit the project page on GitHub: https://github.com/smartlegionlab/clipassgen/
+============================================================
+
+Press Enter to continue...
+---------------------------------- Main Menu: ----------------------------------
+1. Smart Password (from secret)
+2. Strong Random Password
+3. Base Random Password
+4. Authentication Code
+5. Help
 0. Exit
 Enter your choice: 0
 ---------------- https://github.com/smartlegionlab/clipassgen/ -----------------

@@ -8,7 +8,7 @@ from smartpasslib import SmartPasswordMaster
 
 
 def cli():
-    parser = argparse.ArgumentParser(description='Console Smart Passwords Generator v2.1.0')
+    parser = argparse.ArgumentParser(description='Console Smart Passwords Generator v2.1.1')
 
     parser.add_argument('-l', '--length', type=int, help='Password length (4-1000)', default=12)
     parser.add_argument('-s', '--secret', type=str, help='Secret phrase for smart password')
@@ -28,22 +28,24 @@ def cli():
         AppManager.main_menu()
         return
 
+    smart_password_master = SmartPasswordMaster()
+
     password = ''
 
     if args.smart and args.secret:
-        password = SmartPasswordMaster.generate_smart_password(
+        password = smart_password_master.generate_smart_password(
             secret=args.secret,
             length=args.length
         )
 
     elif args.strong:
-        password = SmartPasswordMaster.generate_strong_password(args.length)
+        password = smart_password_master.generate_strong_password(args.length)
 
     elif args.base:
-        password = SmartPasswordMaster.generate_base_password(args.length)
+        password = smart_password_master.generate_base_password(args.length)
 
     elif args.code:
-        password = SmartPasswordMaster.generate_code(args.length)
+        password = smart_password_master.generate_code(args.length)
 
     else:
         print("Error: Invalid arguments")

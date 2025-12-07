@@ -8,18 +8,21 @@ from smartpasslib import SmartPasswordMaster
 
 
 class AppManager:
+    smart_printer = SmartPrinter()
+    smart_password_master = SmartPasswordMaster()
+    config = Config()
 
     @classmethod
     def main_menu(cls):
-        SmartPrinter.show_head(text=f"{Config.name} v2.1.0")
-        cls._show_warning()
+        cls.smart_printer.show_head(text=f"{cls.config.name} {cls.config.version}")
 
         while True:
-            SmartPrinter.print_center('Main Menu:')
+            cls.smart_printer.print_center('Main Menu:')
             print('1. Smart Password (from secret)')
             print('2. Strong Random Password')
             print('3. Base Random Password')
             print('4. Authentication Code')
+            print('5. Help')
             print('0. Exit')
 
             choice = input('Enter your choice: ')
@@ -32,19 +35,22 @@ class AppManager:
                 cls.generate_base_password()
             elif choice == '4':
                 cls.generate_code()
+            elif choice == '5':
+                cls._show_help()
             elif choice == '0':
                 cls.exit_app()
             else:
-                SmartPrinter.print_framed('Error! Invalid choice')
+                cls.smart_printer.print_framed('Error! Invalid choice')
 
-    @staticmethod
-    def _show_warning():
-        print("\n" + "=" * 60)
-        print("⚠️  CLIPASSGEN v2.1.0")
-        print("=" * 60)
+    @classmethod
+    def _show_help(cls):
+        cls.smart_printer.print_center(text='Help')
+        cls.smart_printer.print_framed(f"CLIPASSGEN {cls.config.version}")
+        print('WARNING: ')
         print("• Login parameter removed")
         print("• All v1.x passwords are INVALID")
         print("• Only secret phrase needed")
+        print(f"For more information, visit the project page on GitHub: {cls.config.url}")
         print("=" * 60)
         input("\nPress Enter to continue...")
 
@@ -90,14 +96,14 @@ class AppManager:
 
     @classmethod
     def generate_smart_password(cls):
-        SmartPrinter.print_center(text='Smart Password Generator')
+        cls.smart_printer.print_center(text='Smart Password Generator')
         print("\nGenerates password from your secret phrase.")
         print("Same secret + same length = same password every time.\n")
 
         secret = cls._get_secret()
         length = cls._get_length(min_len=4, max_len=1000, default=16)
 
-        password = SmartPasswordMaster.generate_smart_password(
+        password = cls.smart_password_master.generate_smart_password(
             secret=secret,
             length=length
         )
@@ -107,45 +113,45 @@ class AppManager:
 
     @classmethod
     def generate_strong_password(cls):
-        SmartPrinter.print_center(text='Strong Password Generator')
+        cls.smart_printer.print_center(text='Strong Password Generator')
         length = cls._get_length(min_len=4, max_len=1000, default=16)
 
-        password = SmartPasswordMaster.generate_strong_password(length=length)
+        password = cls.smart_password_master.generate_strong_password(length=length)
         cls._show_password(password)
 
     @classmethod
     def generate_base_password(cls):
-        SmartPrinter.print_center(text='Base Password Generator')
+        cls.smart_printer.print_center(text='Base Password Generator')
         length = cls._get_length(min_len=4, max_len=1000, default=12)
 
-        password = SmartPasswordMaster.generate_base_password(length=length)
+        password = cls.smart_password_master.generate_base_password(length=length)
         cls._show_password(password)
 
     @classmethod
     def generate_code(cls):
-        SmartPrinter.print_center(text='Authentication Code Generator')
+        cls.smart_printer.print_center(text='Authentication Code Generator')
         length = cls._get_length(min_len=4, max_len=20, default=8)
 
-        password = SmartPasswordMaster.generate_code(length=length)
+        password = cls.smart_password_master.generate_code(length=length)
         cls._show_password(password)
 
     @classmethod
     def _show_password(cls, password):
-        SmartPrinter.print_framed('Generated Password:')
+        cls.smart_printer.print_framed('Generated Password:')
         print(password)
         print(f"\nLength: {len(password)} characters")
         cls._continue()
 
     @classmethod
     def _show_public_key(cls, secret):
-        public_key = SmartPasswordMaster.generate_public_key(secret=secret)
+        public_key = cls.smart_password_master.generate_public_key(secret=secret)
 
-        SmartPrinter.print_framed('Public Key (for verification):')
+        cls.smart_printer.print_framed('Public Key (for verification):')
         print(public_key)
         print(f"\nStore this key to verify your secret later.")
         cls._continue()
 
-    @staticmethod
-    def exit_app():
-        SmartPrinter.show_footer(url=Config.url, copyright_=Config.copyright_)
+    @classmethod
+    def exit_app(cls):
+        cls.smart_printer.show_footer(url=cls.config.url, copyright_=cls.config.copyright_)
         sys.exit(0)
