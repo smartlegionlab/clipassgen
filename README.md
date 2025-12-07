@@ -1,4 +1,4 @@
-# CLIPassGen (Console Smart Password Generator) <sup>v2.1.1</sup>
+# CLIPassGen (Console Smart Password Generator) <sup>v2.1.2</sup>
 
 ---
 
@@ -74,7 +74,7 @@ Generate passwords from secret phrases - same secret always produces the same pa
 
 ## 🔬 Technical Foundation
 
-Powered by **[smartpasslib v2.1.1+](https://github.com/smartlegionlab/smartpasslib)** - The core library for deterministic password generation.
+Powered by **[smartpasslib v2.1.2+](https://github.com/smartlegionlab/smartpasslib)** - The core library for deterministic password generation.
 
 **Key principle**: Instead of storing passwords, you store verification metadata. The actual password is regenerated on-demand from your secret phrase.
 
@@ -92,11 +92,11 @@ Powered by **[smartpasslib v2.1.1+](https://github.com/smartlegionlab/smartpassl
 
 ---
 
-## 🆕 What's New in v2.1.1
+## 🆕 What's New in v2.1.2
 
 ### ⚠️ **BREAKING CHANGES WARNING**
 
-**CRITICAL**: v2.1.1 is **NOT** backward compatible with v1.x. All passwords generated with v1.x are now **INVALID**. You must generate new passwords using your secret phrases.
+**CRITICAL**: v2.1.2 is **NOT** backward compatible with v1.x. All passwords generated with v1.x are now **INVALID**. You must generate new passwords using your secret phrases.
 
 ### Major Improvements:
 
@@ -134,9 +134,9 @@ Powered by **[smartpasslib v2.1.1+](https://github.com/smartlegionlab/smartpassl
 
 **Migration Required:**
 ```bash
-# Important: v1.x passwords cannot be regenerated with v2.1.1
+# Important: v1.x passwords cannot be regenerated with v2.1.2
 # Step 1: Recover old passwords using v1.x if needed
-# Step 2: Generate new passwords with v2.1.1
+# Step 2: Generate new passwords with v2.1.2
 # Step 3: Update all service credentials
 # Step 4: Securely delete old password records
 ```
@@ -220,7 +220,7 @@ clipassgen
 **Interactive Menu:**
 ```
 ********************************************************************************
-------------------- Console Smart Password Generator v2.1.1 --------------------
+------------------- Console Smart Password Generator v2.1.2 --------------------
 ---------------------------------- Main Menu: ----------------------------------
 1. Smart Password (from secret)
 2. Strong Random Password
@@ -595,7 +595,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 ## ⚠️ Security Warnings
 
-**Version Incompatibility**: v2.1.1 passwords are incompatible with v1.x.
+**Version Incompatibility**: v2.1.2 passwords are incompatible with v1.x.
 Never mix secret phrases across different versions.
 
 ### Secret Phrase Security
@@ -666,22 +666,22 @@ Usage of this software constitutes your **FULL AND UNCONDITIONAL ACCEPTANCE** of
 
 ---
 
-**Version**: 2.1.1 | [**Author**](https://smartlegionlab.ru): [Alexander Suvorov](https://alexander-suvorov.ru)
+**Version**: 2.1.2 | [**Author**](https://smartlegionlab.ru): [Alexander Suvorov](https://alexander-suvorov.ru)
 
 ---
 
-**Note**: This is v2.1.1. If migrating from v1.x, all passwords must be regenerated with new secret phrases.
+**Note**: This is v2.1.2. If migrating from v1.x, all passwords must be regenerated with new secret phrases.
 
 ---
 
 ## Terminal Interface Examples
 
-![smartpassgen](https://github.com/smartlegionlab/smartpassgen/blob/master/data/images/smartpassgen.png)
+![clipassgen](https://github.com/smartlegionlab/clipassgen/blob/master/data/images/clipassgen.png)
 
 ### Smart Password Generation Flow
 ```
 ********************************************************************************
-------------------- Console Smart Password Generator v2.1.1 --------------------
+------------------- Console Smart Password Generator v2.1.2 --------------------
 ---------------------------------- Main Menu: ----------------------------------
 1. Smart Password (from secret)
 2. Strong Random Password
@@ -778,12 +778,13 @@ Press Enter to continue...
 Enter your choice: 5
 ------------------------------------- Help -------------------------------------
 -----------------
-CLIPASSGEN v2.1.1
+CLIPASSGEN v2.1.2
 -----------------
 WARNING: 
 • Login parameter removed
 • All v1.x passwords are INVALID
 • Only secret phrase needed
+
 For more information, visit the project page on GitHub: https://github.com/smartlegionlab/clipassgen/
 ============================================================
 

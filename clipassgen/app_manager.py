@@ -50,7 +50,7 @@ class AppManager:
         print("• Login parameter removed")
         print("• All v1.x passwords are INVALID")
         print("• Only secret phrase needed")
-        print(f"For more information, visit the project page on GitHub: {cls.config.url}")
+        print(f"\nFor more information, visit the project page on GitHub: {cls.config.url}")
         print("=" * 60)
         input("\nPress Enter to continue...")
 
