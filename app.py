@@ -1,4 +1,4 @@
-# Copyright © 2025, Alexander Suvorov
+# Copyright © 2026, Alexander Suvorov
 """Console Smart Passwords Generator."""
 from clipassgen.app import cli
 
