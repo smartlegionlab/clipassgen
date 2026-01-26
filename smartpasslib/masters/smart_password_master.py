@@ -1,4 +1,4 @@
-# Copyright (©) 2025, Alexander Suvorov. All rights reserved.
+# Copyright (©) 2026, Alexander Suvorov. All rights reserved.
 from smartpasslib import CodeGenerator
 from smartpasslib.generators.base import BasePasswordGenerator
 from smartpasslib.generators.key import SmartKeyGenerator
