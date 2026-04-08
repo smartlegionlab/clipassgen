@@ -18,6 +18,16 @@ Generate passwords from secret phrases - same secret always produces the same pa
 
 ---
 
+## ⚠️ Disclaimer
+
+**By using this software, you agree to the full disclaimer terms.**
+
+**Summary:** Software provided "AS IS" without warranty. You assume all risks.
+
+**Full legal disclaimer:** See [DISCLAIMER.md](https://github.com/smartlegionlab/clipassgen/blob/master/DISCLAIMER.md)
+
+---
+
 ## **🔐 Core Principles:**
 
 - 🔐 **Deterministic Generation**: Same secret + same length = same password, every time
@@ -559,20 +569,7 @@ RUN clipassgen --strong -l 16 > /tmp/generated_password.txt
 
 **[BSD 3-Clause License](LICENSE)**
 
-Copyright (c) 2026, Alexander Suvorov
-
-```
-THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
-AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
-IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
-DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
-FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
-DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
-SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
-CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
-OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
-OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-```
+Copyright (©) 2026, Alexander Suvorov
 
 ---
 
@@ -602,60 +599,6 @@ Never mix secret phrases across different versions.
 5. **Secure memorization required**: Digital storage of secret phrases is prohibited
 
 **Critical**: Test password generation with non-essential accounts before production use
-
----
-
-## 📄 Legal Disclaimer
-
-**COMPLETE AND ABSOLUTE RELEASE FROM ALL LIABILITY**
-
-**SOFTWARE PROVIDED "AS IS" WITHOUT ANY WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NONINFRINGEMENT.**
-
-The copyright holder, contributors, and any associated parties **EXPLICITLY DISCLAIM AND DENY ALL RESPONSIBILITY AND LIABILITY** for:
-
-1. **ANY AND ALL DATA LOSS**: Complete or partial loss of passwords, accounts, credentials, cryptographic keys, or any data whatsoever
-2. **ANY AND ALL SECURITY INCIDENTS**: Unauthorized access, data breaches, account compromises, theft, or exposure of sensitive information
-3. **ANY AND ALL FINANCIAL LOSSES**: Direct, indirect, incidental, special, consequential, or punitive damages of any kind
-4. **ANY AND ALL OPERATIONAL DISRUPTIONS**: Service interruptions, account lockouts, authentication failures, or denial of service
-5. **ANY AND ALL IMPLEMENTATION ISSUES**: Bugs, errors, vulnerabilities, misconfigurations, or incorrect usage
-6. **ANY AND ALL LEGAL OR REGULATORY CONSEQUENTS**: Violations of laws, regulations, compliance requirements, or terms of service
-7. **ANY AND ALL PERSONAL OR BUSINESS DAMAGES**: Reputational harm, business interruption, loss of revenue, or any other damages
-8. **ANY AND ALL THIRD-PARTY CLAIMS**: Claims made by any other parties affected by software usage
-
-**USER ACCEPTS FULL AND UNCONDITIONAL RESPONSIBILITY**
-
-By installing, accessing, or using this software in any manner, you irrevocably agree that:
-
-- You assume **ALL** risks associated with software usage
-- You bear **SOLE** responsibility for secret phrase management and security
-- You accept **COMPLETE** responsibility for all testing and validation
-- You are **EXCLUSIVELY** liable for compliance with all applicable laws
-- You accept **TOTAL** responsibility for any and all consequences
-- You **PERMANENTLY AND IRREVOCABLY** waive, release, and discharge all claims against the copyright holder, contributors, distributors, and any associated entities
-
-**NO WARRANTY OF ANY KIND**
-
-This software comes with **ABSOLUTELY NO GUARANTEES** regarding:
-- Security effectiveness or cryptographic strength
-- Reliability or availability
-- Fitness for any particular purpose
-- Accuracy or correctness
-- Freedom from defects or vulnerabilities
-
-**NOT A SECURITY PRODUCT OR SERVICE**
-
-This is experimental software. It is not:
-- Security consultation or advice
-- A certified cryptographic product
-- A guaranteed security solution
-- Professional security software
-- Endorsed by any security authority
-
-**FINAL AND BINDING AGREEMENT**
-
-Usage of this software constitutes your **FULL AND UNCONDITIONAL ACCEPTANCE** of this disclaimer. If you do not accept **ALL** terms and conditions, **DO NOT USE THE SOFTWARE.**
-
-**BY PROCEEDING, YOU ACKNOWLEDGE THAT YOU HAVE READ THIS DISCLAIMER IN ITS ENTIRETY, UNDERSTAND ITS TERMS COMPLETELY, AND ACCEPT THEM WITHOUT RESERVATION OR EXCEPTION.**
 
 ---
 
