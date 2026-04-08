@@ -1,4 +1,4 @@
-# CliPassGen (Console Smart Password Generator) <sup>v2.1.5</sup>
+# CliPassGen (Console Smart Password Generator) <sup>v2.1.6</sup>
 
 ---
 
@@ -15,6 +15,8 @@ Generate passwords from secret phrases - same secret always produces the same pa
 [![PyPI version](https://img.shields.io/pypi/v/clipassgen)](https://pypi.org/project/clipassgen)
 [![GitHub license](https://img.shields.io/github/license/smartlegionlab/clipassgen)](https://github.com/smartlegionlab/clipassgen/blob/master/LICENSE)
 [![PyPI format](https://img.shields.io/pypi/format/clipassgen)](https://pypi.org/project/clipassgen)
+[![GitHub stars](https://img.shields.io/github/stars/smartlegionlab/clipassgen?style=social)](https://github.com/smartlegionlab/clipassgen/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/smartlegionlab/clipassgen?style=social)](https://github.com/smartlegionlab/clipassgen/network/members)
 
 ---
 
@@ -92,7 +94,7 @@ Powered by **[smartpasslib v2.1.0+](https://github.com/smartlegionlab/smartpassl
 
 ---
 
-## What's New in v2.1.5
+## What's New in v2.1.6
 
 ### Major Improvements:
 
@@ -197,7 +199,7 @@ clipassgen
 **Interactive Menu:**
 ```
 ********************************************************************************
-------------------- Console Smart Password Generator v2.1.5 --------------------
+------------------- Console Smart Password Generator v2.1.6 --------------------
 ---------------------------------- Main Menu: ----------------------------------
 1. Smart Password (from secret)
 2. Strong Random Password
@@ -564,7 +566,7 @@ Copyright (©) 2026, Alexander Suvorov
 
 ---
 
-**Version**: 2.1.5 | [**Author**](https://smartlegionlab.ru): [Alexander Suvorov](https://alexander-suvorov.ru)
+**Version**: 2.1.6 | [**Author**](https://smartlegionlab.ru): [Alexander Suvorov](https://alexander-suvorov.ru)
 
 
 ---
@@ -576,7 +578,7 @@ Copyright (©) 2026, Alexander Suvorov
 ### Smart Password Generation Flow
 ```
 ********************************************************************************
-------------------- Console Smart Password Generator v2.1.5 --------------------
+------------------- Console Smart Password Generator v2.1.6 --------------------
 ---------------------------------- Main Menu: ----------------------------------
 1. Smart Password (from secret)
 2. Strong Random Password
@@ -673,7 +675,7 @@ Press Enter to continue...
 Enter your choice: 5
 ------------------------------------- Help -------------------------------------
 -----------------
-CLIPASSGEN v2.1.5
+CLIPASSGEN v2.1.6
 -----------------
 
 For more information, visit the project page on GitHub: https://github.com/smartlegionlab/clipassgen/
