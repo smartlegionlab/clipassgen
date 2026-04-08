@@ -1,4 +1,4 @@
-# CliPassGen (Console Smart Password Generator) <sup>v2.1.4</sup>
+# CliPassGen (Console Smart Password Generator) <sup>v2.1.5</sup>
 
 ---
 
@@ -28,13 +28,13 @@ Generate passwords from secret phrases - same secret always produces the same pa
 
 ---
 
-## **🔐 Core Principles:**
+## **Core Principles:**
 
-- 🔐 **Deterministic Generation**: Same secret + same length = same password, every time
-- 🔑 **Zero Storage**: Passwords exist only when generated, never stored
-- 🧠 **Memory-Based Security**: Your brain is the only password database
-- 💻 **Terminal-First**: Optimized for CLI workflows and scripting
-- ⚡ **Multi-Mode Generation**: Smart passwords, strong random, base passwords, and auth codes
+- **Deterministic Generation**: Same secret + same length = same password, every time
+- **Zero Storage**: Passwords exist only when generated, never stored
+- **Memory-Based Security**: Your brain is the only password database
+- **Terminal-First**: Optimized for CLI workflows and scripting
+- **Multi-Mode Generation**: Smart passwords, strong random, base passwords, and auth codes
 
 **What You Can Do:**
 1. **Generate Smart Passwords**: Deterministic passwords from secret phrases
@@ -47,14 +47,14 @@ Generate passwords from secret phrases - same secret always produces the same pa
 8. **No Dependencies**: Pure Python with smartpasslib core
 
 **Key Features:**
-- ✅ **Deterministic Security**: Identical input → identical output, always
-- ✅ **Four Generation Modes**: Smart, Strong, Base, and Code
-- ✅ **Public Key Verification**: Generate keys to prove secret knowledge
-- ✅ **Interactive & CLI Modes**: Both menu-driven and command-line interfaces
-- ✅ **Hidden Input**: Secret phrase entry via getpass (hidden typing)
-- ✅ **SmartPrinter Output**: Beautiful centered and framed terminal text
-- ✅ **Length Flexibility**: 4-1000 characters depending on mode
-- ✅ **No Internet Required**: All cryptographic operations local
+- **Deterministic Security**: Identical input → identical output, always
+- **Four Generation Modes**: Smart, Strong, Base, and Code
+- **Public Key Verification**: Generate keys to prove secret knowledge
+- **Interactive & CLI Modes**: Both menu-driven and command-line interfaces
+- **Hidden Input**: Secret phrase entry via getpass (hidden typing)
+- **SmartPrinter Output**: Beautiful centered and framed terminal text
+- **Length Flexibility**: 4-1000 characters depending on mode
+- **No Internet Required**: All cryptographic operations local
 
 **Security Model:**
 - **Proof of Knowledge**: Public keys verify secrets without exposing them
@@ -65,24 +65,14 @@ Generate passwords from secret phrases - same secret always produces the same pa
 
 ---
 
-## ⚠️ Critical Notice
-
-**BEFORE USING THIS SOFTWARE, READ THE COMPLETE LEGAL DISCLAIMER BELOW**
-
-[View Legal Disclaimer & Liability Waiver](#-legal-disclaimer)
-
-*Usage of this software constitutes acceptance of all terms and conditions.*
-
----
-
-## 📚 Research Paradigms & Publications
+## Research Paradigms & Publications
 
 - **[Pointer-Based Security Paradigm](https://doi.org/10.5281/zenodo.17204738)** - Architectural Shift from Data Protection to Data Non-Existence
 - **[Local Data Regeneration Paradigm](https://doi.org/10.5281/zenodo.17264327)** - Ontological Shift from Data Transmission to Synchronous State Discovery
 
 ---
 
-## 🔬 Technical Foundation
+## Technical Foundation
 
 Powered by **[smartpasslib v2.1.0+](https://github.com/smartlegionlab/smartpasslib)** - The core library for deterministic password generation.
 
@@ -102,11 +92,7 @@ Powered by **[smartpasslib v2.1.0+](https://github.com/smartlegionlab/smartpassl
 
 ---
 
-## 🆕 What's New in v2.1.4
-
-### ⚠️ **BREAKING CHANGES WARNING**
-
-**CRITICAL**: v2.1.4 is **NOT** backward compatible with v1.x. All passwords generated with v1.x are now **INVALID**. You must generate new passwords using your secret phrases.
+## What's New in v2.1.5
 
 ### Major Improvements:
 
@@ -129,27 +115,9 @@ Powered by **[smartpasslib v2.1.0+](https://github.com/smartlegionlab/smartpassl
 - **Input validation** with helpful error messages
 
 **User Experience:**
-- **Clear migration warnings** with v1.x incompatibility notice
-- **Public key display** for verification purposes
 - **Length parameter flexibility** (4-1000 characters)
+- **Public key display** for verification purposes
 - **Multiple generation modes** in one tool
-
-### Breaking Changes:
-
-**Compatibility:**
-- **NOT compatible** with v1.x password generation
-- Requires **smartpasslib v2.1.0+**
-- **All v1.x passwords are invalid**
-- **Login parameter completely removed**
-
-**Migration Required:**
-```bash
-# Important: v1.x passwords cannot be regenerated with v2.1.4
-# Step 1: Recover old passwords using v1.x if needed
-# Step 2: Generate new passwords with v2.1.4
-# Step 3: Update all service credentials
-# Step 4: Securely delete old password records
-```
 
 ### New Features:
 
@@ -185,12 +153,11 @@ clipassgen --code -l 8
 1. **Simplified Workflow** - No login parameter needed
 2. **Better Terminal UI** - Professional output formatting
 3. **Multiple Generation Modes** - One tool for all password types
-4. **Clear Migration Path** - Explicit v1.x incompatibility
-5. **Enhanced Security** - Updated cryptographic foundation
+4. **Enhanced Security** - Updated cryptographic foundation
 
 ---
 
-## 📦 Installation & Quick Start
+## Installation & Quick Start
 
 ### Prerequisites
 - **Python 3.7+** required
@@ -218,7 +185,7 @@ pip install .
 
 ---
 
-## 🚀 Quick Usage Guide
+## Quick Usage Guide
 
 ### Interactive Mode (Recommended for Beginners)
 ```bash
@@ -230,7 +197,7 @@ clipassgen
 **Interactive Menu:**
 ```
 ********************************************************************************
-------------------- Console Smart Password Generator v2.1.4 --------------------
+------------------- Console Smart Password Generator v2.1.5 --------------------
 ---------------------------------- Main Menu: ----------------------------------
 1. Smart Password (from secret)
 2. Strong Random Password
@@ -276,7 +243,7 @@ clipassgen --code -l 8
 
 ---
 
-## 📦 Windows Standalone Executable
+## Windows Standalone Executable
 
 ### Creating a Single-File *.exe
 
@@ -292,7 +259,7 @@ Build a standalone `clipassgen.exe` that runs without Python installation:
 #### Step 2: Install Python
 1. Download Python installer from: https://python.org/downloads/
 2. Run installer
-3. **IMPORTANT:** Check ✅ "Add Python to PATH"
+3. **IMPORTANT:** Check "Add Python to PATH"
 4. Click "Install Now"
 
 #### Step 3: Open Command Prompt
@@ -354,7 +321,7 @@ C:\clipassgen-master\dist\clipassgen.exe --smart -s "mysecret" -l 16
 
 ---
 
-## 🏗️ Core Components
+## Core Components
 
 ### Generation Modes Explained
 
@@ -392,7 +359,7 @@ C:\clipassgen-master\dist\clipassgen.exe --smart -s "mysecret" -l 16
 
 ---
 
-## 💡 Advanced Usage
+## Advanced Usage
 
 ### Scripting Integration
 
@@ -495,7 +462,7 @@ done
 
 ---
 
-## 🔧 Ecosystem Integration
+## Ecosystem Integration
 
 ### Part of Smart Password Suite
 
@@ -565,7 +532,7 @@ RUN clipassgen --strong -l 16 > /tmp/generated_password.txt
 
 ---
 
-## 📜 License
+## License
 
 **[BSD 3-Clause License](LICENSE)**
 
@@ -573,7 +540,7 @@ Copyright (©) 2026, Alexander Suvorov
 
 ---
 
-## 🆘 Support
+## Support
 
 - **Generator Issues**: [GitHub Issues](https://github.com/smartlegionlab/clipassgen/issues)
 - **Core Library Issues**: [smartpasslib Issues](https://github.com/smartlegionlab/smartpasslib/issues)
@@ -582,11 +549,6 @@ Copyright (©) 2026, Alexander Suvorov
 **Note**: Always test password generation with non-essential accounts first. Implementation security depends on proper usage.
 
 ---
-
-## ⚠️ Security Warnings
-
-**Version Incompatibility**: v2.1.4 passwords are incompatible with v1.x.
-Never mix secret phrases across different versions.
 
 ### Secret Phrase Security
 
@@ -602,11 +564,8 @@ Never mix secret phrases across different versions.
 
 ---
 
-**Version**: 2.1.4 | [**Author**](https://smartlegionlab.ru): [Alexander Suvorov](https://alexander-suvorov.ru)
+**Version**: 2.1.5 | [**Author**](https://smartlegionlab.ru): [Alexander Suvorov](https://alexander-suvorov.ru)
 
----
-
-**Note**: This is v2.1.4. If migrating from v1.x, all passwords must be regenerated with new secret phrases.
 
 ---
 
@@ -617,7 +576,7 @@ Never mix secret phrases across different versions.
 ### Smart Password Generation Flow
 ```
 ********************************************************************************
-------------------- Console Smart Password Generator v2.1.4 --------------------
+------------------- Console Smart Password Generator v2.1.5 --------------------
 ---------------------------------- Main Menu: ----------------------------------
 1. Smart Password (from secret)
 2. Strong Random Password
@@ -714,12 +673,8 @@ Press Enter to continue...
 Enter your choice: 5
 ------------------------------------- Help -------------------------------------
 -----------------
-CLIPASSGEN v2.1.4
+CLIPASSGEN v2.1.5
 -----------------
-WARNING: 
-• Login parameter removed
-• All v1.x passwords are INVALID
-• Only secret phrase needed
 
 For more information, visit the project page on GitHub: https://github.com/smartlegionlab/clipassgen/
 ============================================================

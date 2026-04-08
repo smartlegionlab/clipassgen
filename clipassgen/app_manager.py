@@ -46,10 +46,6 @@ class AppManager:
     def _show_help(cls):
         cls.smart_printer.print_center(text='Help')
         cls.smart_printer.print_framed(f"CLIPASSGEN {cls.config.version}")
-        print('WARNING: ')
-        print("• Login parameter removed")
-        print("• All v1.x passwords are INVALID")
-        print("• Only secret phrase needed")
         print(f"\nFor more information, visit the project page on GitHub: {cls.config.url}")
         print("=" * 60)
         input("\nPress Enter to continue...")
