@@ -50,13 +50,24 @@ class AppManager:
         print("=" * 60)
         input("\nPress Enter to continue...")
 
-    @staticmethod
-    def _get_secret():
+    @classmethod
+    def _get_secret(cls):
         while True:
+            print("\nIMPORTANT: Your secret phrase (minimum 12 characters):")
+            print("• Is case-sensitive")
+            print("• Should be memorable but secure")
+            print("• Will generate the same password every time")
+            print("\nGood examples: 'MyCat🐱Hippo2026' or 'P@ssw0rd!LongSecret'")
+            print("Bad examples: 'password123', 'qwerty', 'mysecret'\n")
+
             secret = getpass.getpass("Enter secret phrase (hidden): ")
 
             if not secret:
                 print('Secret phrase cannot be empty!')
+                continue
+
+            if len(secret) < 12:
+                print(f'Error: Secret phrase must be at least 12 characters (current: {len(secret)})')
                 continue
 
             secret2 = getpass.getpass("Confirm secret phrase (hidden): ")
@@ -67,8 +78,27 @@ class AppManager:
 
             return secret
 
-    @staticmethod
-    def _get_length(min_len=4, max_len=1000, default=12):
+    @classmethod
+    def _get_length(cls, min_len=12, max_len=1000, default=16):
+        while True:
+            prompt = f'Enter length [{min_len}-{max_len}] (default {default}): '
+            length_input = input(prompt)
+
+            if not length_input:
+                return default
+
+            try:
+                length = int(length_input)
+                if length < min_len or length > max_len:
+                    print(f'Length must be between {min_len} and {max_len}')
+                    continue
+                return length
+            except ValueError:
+                print('Please enter a valid number')
+                continue
+
+    @classmethod
+    def _get_code_length(cls, min_len=4, max_len=20, default=8):
         while True:
             prompt = f'Enter length [{min_len}-{max_len}] (default {default}): '
             length_input = input(prompt)
@@ -97,7 +127,7 @@ class AppManager:
         print("Same secret + same length = same password every time.\n")
 
         secret = cls._get_secret()
-        length = cls._get_length(min_len=4, max_len=1000, default=16)
+        length = cls._get_length(min_len=12, max_len=1000, default=16)
 
         password = cls.smart_password_master.generate_smart_password(
             secret=secret,
@@ -110,7 +140,7 @@ class AppManager:
     @classmethod
     def generate_strong_password(cls):
         cls.smart_printer.print_center(text='Strong Password Generator')
-        length = cls._get_length(min_len=4, max_len=1000, default=16)
+        length = cls._get_length(min_len=12, max_len=1000, default=16)
 
         password = cls.smart_password_master.generate_strong_password(length=length)
         cls._show_password(password)
@@ -118,7 +148,7 @@ class AppManager:
     @classmethod
     def generate_base_password(cls):
         cls.smart_printer.print_center(text='Base Password Generator')
-        length = cls._get_length(min_len=4, max_len=1000, default=12)
+        length = cls._get_length(min_len=12, max_len=1000, default=16)
 
         password = cls.smart_password_master.generate_base_password(length=length)
         cls._show_password(password)
@@ -126,7 +156,7 @@ class AppManager:
     @classmethod
     def generate_code(cls):
         cls.smart_printer.print_center(text='Authentication Code Generator')
-        length = cls._get_length(min_len=4, max_len=20, default=8)
+        length = cls._get_code_length(min_len=4, max_len=20, default=8)
 
         password = cls.smart_password_master.generate_code(length=length)
         cls._show_password(password)

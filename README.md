@@ -1,4 +1,4 @@
-# CliPassGen (Console Smart Password Generator) <sup>v3.0.0</sup>
+# CliPassGen (Console Smart Password Generator) <sup>v3.0.1</sup>
 
 ---
 
@@ -32,7 +32,7 @@ Generate passwords from secret phrases - same secret always produces the same pa
 
 ## 🔄 Important: smartpasslib v3.0.0 Breaking Change
 
-> **⚠️ This release (v3.0.0) uses [smartpasslib](https://github.com/smartlegionlab/smartpasslib) v3.0.0, which is NOT backward compatible with v2.x.x**
+> **⚠️ This release (v3.0.1) uses [smartpasslib](https://github.com/smartlegionlab/smartpasslib) v3.0.0, which is NOT backward compatible with v2.x.x**
 
 ### Why the change?
 
@@ -46,13 +46,13 @@ Generate passwords from secret phrases - same secret always produces the same pa
 ### What changed:
 
 - The core password generation algorithm has been completely redesigned
-- Smart passwords created with v2.1.6 or earlier **will be different** when generated with v3.0.0
+- Smart passwords created with v2.1.6 or earlier **will be different** when generated with v3.0.1
 - Same secret phrase + same length = different password between versions
 
 ### What you need to do:
 
 1. **If you use smart passwords for existing accounts** — you must regenerate and update them
-2. **Use the same secret phrases** — they will produce new passwords in v3.0.0
+2. **Use the same secret phrases** — they will produce new passwords in v3.0.1
 3. **Update your passwords** on all websites/services after upgrading
 
 **Important**: This only affects **smart passwords** (deterministic from secret phrase). Random generation modes (`--strong`, `--base`, `--code`) are unaffected.
@@ -86,7 +86,7 @@ Generate passwords from secret phrases - same secret always produces the same pa
 - **Interactive & CLI Modes**: Both menu-driven and command-line interfaces
 - **Hidden Input**: Secret phrase entry via getpass (hidden typing)
 - **SmartPrinter Output**: Beautiful centered and framed terminal text
-- **Length Flexibility**: 4-1000 characters depending on mode
+- **Length Flexibility**: 12-1000 characters for passwords, 4-20 for codes
 - **No Internet Required**: All cryptographic operations local
 
 **Security Model:**
@@ -111,17 +111,17 @@ Powered by **[smartpasslib](https://github.com/smartlegionlab/smartpasslib) v3.0
 
 > ⚠️ **BREAKING CHANGE NOTICE**  
 > **smartpasslib v3.0.0 is NOT backward compatible with v2.x.x**  
-> Smart passwords generated with v2.x.x will be different when generated with v3.0.0 due to fundamental changes in the deterministic generation algorithm.
+> Smart passwords generated with v2.x.x will be different when generated with v3.0.1 due to fundamental changes in the deterministic generation algorithm.
 
 **What this means for you:**
 - All smart passwords created with **v2.1.6 or earlier** must be **regenerated and updated** after upgrading
 - Random generation modes (`--strong`, `--base`, `--code`) are **unaffected**
-- Public keys generated from secrets will also be **different** in v3.0.0
+- Public keys generated from secrets will also be **different** in v3.0.1
 
 **Key principle** (unchanged): Deterministic generation from secret phrase. Same input = same output **within the same major version**.
 
 **Generation Modes:**
-- **Smart Password**: Deterministic from secret phrase (BREAKING CHANGE in v3.0.0)
+- **Smart Password**: Deterministic from secret phrase (BREAKING CHANGE in v3.0.1)
 - **Strong Password**: Cryptographically secure random generation (unchanged)
 - **Base Password**: Simple random password generation (unchanged)
 - **Authentication Code**: Secure code generation for 2FA/MFA (unchanged)
@@ -130,13 +130,13 @@ Powered by **[smartpasslib](https://github.com/smartlegionlab/smartpasslib) v3.0
 - Generated from secret phrase via enhanced algorithm
 - Can be safely stored/shared to verify secret knowledge
 - No way to derive secret from public key
-- **Note**: v3.0.0 public keys are different from v2.x.x
+- **Note**: v3.0.1 public keys are different from v2.x.x
 
 ---
 
 ## Migration Section
 
-### Migrating from v2.x.x to v3.0.0
+### Migrating from v2.x.x to v3.0.1
 
 **⚠️ This only affects users who use smart passwords for existing accounts**
 
@@ -148,10 +148,10 @@ Powered by **[smartpasslib](https://github.com/smartlegionlab/smartpasslib) v3.0
 - Before upgrading, retrieve all smart passwords you actively use
 - Save them temporarily in a secure location
 
-**Step 3: Upgrade to v3.0.0**
+**Step 3: Upgrade to v3.0.1**
 ```bash
 # Update via pip
-pip install clipassgen==3.0.0
+pip install clipassgen==3.0.1
 
 # Or rebuild executable with new version
 ```
@@ -172,7 +172,7 @@ clipassgen --smart -s "your_secret_phrase" -l 16
 
 ---
 
-## What's New in v3.0.0
+## What's New in v3.0.1
 
 ### Breaking Change: smartpasslib v3.0.0
 
@@ -180,6 +180,13 @@ clipassgen --smart -s "your_secret_phrase" -l 16
 - **NOT backward compatible** with v2.x.x — smart passwords will be different
 - **Random generation modes unaffected** — `--strong`, `--base`, `--code` work as before
 - **See migration section above** for detailed upgrade instructions
+
+### Secret Phrase Requirements (NEW in v3.0.1)
+
+- **Minimum 12 characters** enforced for all secret phrases
+- **Password length minimum increased** from 4 to 12 characters
+- **Authentication codes remain 4-20 characters** (for manual entry convenience)
+- **Better security guidance** with strong/weak examples
 
 ### Previous Improvements (from v2.1.6)
 
@@ -202,7 +209,7 @@ clipassgen --smart -s "your_secret_phrase" -l 16
 - **Input validation** with helpful error messages
 
 **User Experience:**
-- **Length parameter flexibility** (4-1000 characters)
+- **Length parameter flexibility** (12-1000 characters for passwords, 4-20 for codes)
 - **Public key display** for verification purposes
 - **Multiple generation modes** in one tool
 
@@ -217,10 +224,10 @@ clipassgen --smart -s "your_secret_phrase" -l 16
 ### Quick Installation
 ```bash
 # Install from PyPI
-pip install clipassgen==3.0.0
+pip install clipassgen==3.0.1
 
 # For systems with package conflicts
-pip install clipassgen==3.0.0 --break-system-packages
+pip install clipassgen==3.0.1 --break-system-packages
 
 # Verify installation
 clipassgen --help
@@ -247,7 +254,7 @@ clipassgen
 **Interactive Menu:**
 ```
 ********************************************************************************
-------------------- Console Smart Password Generator v3.0.0 --------------------
+------------------- Console Smart Password Generator v3.0.1 --------------------
 ---------------------------------- Main Menu: ----------------------------------
 1. Smart Password (from secret)
 2. Strong Random Password
@@ -273,8 +280,8 @@ clipassgen --smart -s "MySecureSecretPhrase@2026" -l 16
 # Generate 20-character strong random password
 clipassgen --strong -l 20
 
-# Generate 12-character base random password
-clipassgen --base -l 12
+# Generate 16-character base random password
+clipassgen --base -l 16
 ```
 
 **Authentication Codes (Unchanged):**
@@ -286,7 +293,7 @@ clipassgen --code -l 8
 ### Generating Public Keys
 ```bash
 # Public keys are automatically shown in interactive mode
-# Note: v3.0.0 public keys are different from v2.x.x
+# Note: v3.0.1 public keys are different from v2.x.x
 ```
 
 ---
@@ -375,12 +382,12 @@ C:\clipassgen-master\dist\clipassgen.exe --smart -s "mysecret" -l 16
 
 **1. Smart Password Mode:**
 - **Type**: Deterministic
-- **Input**: Secret phrase + Length
+- **Input**: Secret phrase + Length (secret min 12 chars)
 - **Output**: Same password for same inputs **within same major version**
 - **Use Case**: Account passwords, master passwords
 - **Security**: Based on secret phrase strength
-- **Length Range**: 4-1000 characters
-- **⚠️ v3.0.0 change**: Output differs from v2.x.x
+- **Length Range**: 12-1000 characters
+- **⚠️ v3.0.1 change**: Output differs from v2.x.x
 
 **2. Strong Password Mode:**
 - **Type**: Cryptographically random
@@ -388,8 +395,8 @@ C:\clipassgen-master\dist\clipassgen.exe --smart -s "mysecret" -l 16
 - **Output**: Unique password each time
 - **Use Case**: One-time passwords, temporary access
 - **Security**: System cryptographic randomness
-- **Length Range**: 4-1000 characters
-- **✅ Unaffected by v3.0.0**
+- **Length Range**: 12-1000 characters
+- **✅ Unaffected by v3.0.1**
 
 **3. Base Password Mode:**
 - **Type**: Simple random
@@ -397,8 +404,8 @@ C:\clipassgen-master\dist\clipassgen.exe --smart -s "mysecret" -l 16
 - **Output**: Unique password each time
 - **Use Case**: Low-security applications, testing
 - **Security**: Basic randomness
-- **Length Range**: 4-1000 characters
-- **✅ Unaffected by v3.0.0**
+- **Length Range**: 12-1000 characters
+- **✅ Unaffected by v3.0.1**
 
 **4. Authentication Code Mode:**
 - **Type**: Code-optimized random
@@ -407,7 +414,7 @@ C:\clipassgen-master\dist\clipassgen.exe --smart -s "mysecret" -l 16
 - **Use Case**: 2FA codes, PIN replacements
 - **Security**: Character diversity optimized
 - **Length Range**: 4-20 characters
-- **✅ Unaffected by v3.0.0**
+- **✅ Unaffected by v3.0.1**
 
 ---
 
@@ -472,31 +479,34 @@ clipassgen
 
 ### Secret Phrase Strategy
 
-**Best Practices:**
-1. **Service-specific secrets**: Different secret for each service type
-2. **Pattern-based memorization**: Use consistent patterns you can remember
-3. **Length matters**: Longer secrets = stronger cryptographic foundation
-4. **Character diversity**: Mix uppercase, lowercase, numbers, symbols
-5. **Personalization**: Include personal elements only you would know
+**Your secret phrase is the only key to all your passwords. Keep it safe, keep it secret.**
 
-**Example Secret Patterns:**
+#### Minimum Requirements (enforced by the app):
+- **At least 12 characters** — shorter secrets are not accepted
+- **Case-sensitive** — "MySecret" and "mysecret" are different
+
+#### Strong Secret Examples:
 ```
-# Pattern: Service + Year + Personal Element
-"GitHub2026BlueDragon@Boston"
-"Email2026PurpleMoon#Seattle"
-"Bank2026GoldenSun$Chicago"
-
-# Pattern: Phrase + Service + Special
-"MyFavoriteGitHubPassword@2026!"
-"SecureEmailAccess#Winter2026"
-"BankingPortalSecret$Fall2026"
+✅ "MyCat🐱Hippo2026"        — emoji + mixed case + numbers
+✅ "P@ssw0rd!LongSecret"     — special chars + numbers + length
+✅ "КотБегемот2026НаДиете"   — Cyrillic + numbers
+✅ "Correct-Horse-Battery-42" — memorable phrase with separator
 ```
 
-**Avoid:**
-- Common phrases ("password123", "letmein")
-- Personal information (birthdates, names)
-- Short secrets (under 12 characters)
-- Dictionary words without modification
+#### Weak Secret Examples (avoid):
+```
+❌ "password"                — dictionary word, too short
+❌ "1234567890"              — only digits, too short
+❌ "qwerty123"               — keyboard pattern
+❌ "mysecret"                — common phrase, too short
+```
+
+#### Best Practices:
+1. **Unique per service** - Different secret for each account type
+2. **Memorable but complex** - Phrases you can remember
+3. **Case-sensitive** - v3.0.1 enforces exact case matching
+4. **No digital storage** - Keep only in memory
+5. **Backup plan** - Physical written backup in secure location
 
 ---
 
@@ -541,8 +551,8 @@ clipassgen
 
 | Version | smartpasslib | Status | Migration Required |
 |---------|--------------|--------|---------------------|
-| v2.1.6 and below | v2.x.x | ❌ Deprecated/Unsupported | Must migrate to v3.0.0 |
-| v3.0.0+ | v3.0.0 | ✅ Current | N/A |
+| v2.1.6 and below | v2.x.x | ❌ Deprecated/Unsupported | Must migrate to v3.0.1 |
+| v3.0.1+ | v3.0.0 | ✅ Current | N/A |
 
 ---
 
@@ -578,15 +588,27 @@ Copyright (©) 2026, Alexander Suvorov
 
 **Critical**: Test password generation with non-essential accounts before production use
 
+### Secret Phrase Strength
+
+**The security of your passwords depends entirely on your secret phrase.**
+
+- **Minimum 12 characters** is enforced by the application
+- Short secrets (under 12 chars) are **automatically rejected**
+- Weak secrets like "password123" or "qwerty" will be rejected
+- Use a mix of: uppercase, lowercase, numbers, symbols, emoji, or Cyrillic
+- A 12-character secret with diverse character types provides **practical brute-force immunity**
+
+**Remember:** The app cannot recover your secret phrase. If you lose it, all passwords are permanently lost.
+
 ### Version Compatibility Notes
 
-- **v3.0.0 smart passwords are different from v2.x.x**
+- **v3.0.1 smart passwords are different from v2.x.x**
 - Random generation modes are unchanged
 - Always verify password compatibility before upgrading critical systems
 
 ---
 
-**Version**: 3.0.0 | [**Author**](https://smartlegionlab.ru): [Alexander Suvorov](https://alexander-suvorov.ru)
+**Version**: 3.0.1 | [**Author**](https://smartlegionlab.ru): [Alexander Suvorov](https://alexander-suvorov.ru)
 
 ---
 
@@ -597,7 +619,7 @@ Copyright (©) 2026, Alexander Suvorov
 ### Smart Password Generation Flow
 ```
 ********************************************************************************
-------------------- Console Smart Password Generator v3.0.0 --------------------
+------------------- Console Smart Password Generator v3.0.1 --------------------
 ---------------------------------- Main Menu: ----------------------------------
 1. Smart Password (from secret)
 2. Strong Random Password
@@ -611,9 +633,17 @@ Enter your choice: 1
 Generates password from your secret phrase.
 Same secret + same length = same password every time.
 
+IMPORTANT: Your secret phrase (minimum 12 characters):
+• Is case-sensitive
+• Should be memorable but secure
+• Will generate the same password every time
+
+Good examples: 'MyCat🐱Hippo2026' or 'P@ssw0rd!LongSecret'
+Bad examples: 'password123', 'qwerty', 'mysecret'
+
 Enter secret phrase (hidden): 
 Confirm secret phrase (hidden): 
-Enter length [4-1000] (default 16): 16
+Enter length [12-1000] (default 16): 16
 -------------------
 Generated Password:
 -------------------
@@ -639,7 +669,7 @@ Press Enter to continue...
 0. Exit
 Enter your choice: 2
 -------------------------- Strong Password Generator ---------------------------
-Enter length [4-1000] (default 16): 16
+Enter length [12-1000] (default 16): 16
 -------------------
 Generated Password:
 -------------------
@@ -657,7 +687,7 @@ Press Enter to continue...
 0. Exit
 Enter your choice: 3
 --------------------------- Base Password Generator ----------------------------
-Enter length [4-1000] (default 12): 16
+Enter length [12-1000] (default 16): 16
 -------------------
 Generated Password:
 -------------------
@@ -694,7 +724,7 @@ Press Enter to continue...
 Enter your choice: 5
 ------------------------------------- Help -------------------------------------
 -----------------
-CLIPASSGEN v3.0.0
+CLIPASSGEN v3.0.1
 -----------------
 
 For more information, visit the project page on GitHub: https://github.com/smartlegionlab/clipassgen/
