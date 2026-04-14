@@ -1,31 +1,42 @@
 # Copyright (©) 2026, Alexander Suvorov. All rights reserved.
-import random
-from typing import Union
+import hashlib
 
-from smartpasslib.generators.base import BasePasswordGenerator
+from smartpasslib import SmartKeyGenerator
+from smartpasslib.core.chars import PasswordChars
 
 
-class SmartPasswordGenerator:
+class SmartPasswordGenerator(PasswordChars):
     """
-    Deterministic password generator using seed-based randomness.
+    Generator for deterministic cross-platform smart passwords.
 
-    Generates reproducible passwords from cryptographic seeds.
+    Uses SHA-256 to generate reproducible passwords from a seed string.
+    The same seed and length will produce identical passwords on any platform
+    that implements SHA-256.
     """
 
     @classmethod
-    def generate(cls, seed: Union[str, bytes], length: int = 15) -> str:
+    def generate(cls, seed: str, length: int = 12) -> str:
         """
-        Generate deterministic password from seed.
+        Generate a deterministic smart password from a seed string.
 
         Args:
-            seed: Cryptographic seed for deterministic generation
-            length: Password length (default: 15)
+            seed: String that determines the password (same seed = same password)
+            length: Length of password to generate (default: 12)
 
         Returns:
-            str: Deterministically generated password
+            str: Deterministically generated smart password
         """
-        original_state = random.getstate()
-        random.seed(seed)
-        password = BasePasswordGenerator.generate(length)
-        random.setstate(original_state)
-        return password
+        seed = SmartKeyGenerator.generate_private_key(secret=seed)
+        result = []
+        counter = 0
+
+        while len(result) < length:
+            data = f"{seed}:{counter}".encode()
+            hash_bytes = hashlib.sha256(data).digest()
+
+            for byte in hash_bytes:
+                if len(result) < length:
+                    result.append(cls.all()[byte % len(cls.all())])
+            counter += 1
+
+        return ''.join(result)

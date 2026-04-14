@@ -62,8 +62,7 @@ class SmartPasswordMaster:
         Returns:
             str: Generated password
         """
-        seed = SmartKeyGenerator.generate_private_key(secret=secret)
-        return SmartPasswordGenerator.generate(seed, length=length)
+        return SmartPasswordGenerator.generate(secret, length=length)
 
     @classmethod
     def generate_public_key(cls, secret: str) -> str:

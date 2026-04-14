@@ -1,27 +1,49 @@
 # Copyright (©) 2026, Alexander Suvorov. All rights reserved.
-import random
-import string
+import secrets
+
+from smartpasslib.core.chars import PasswordChars
 
 
-class BasePasswordGenerator:
+class BasePasswordGenerator(PasswordChars):
     """
-    Generator for basic random passwords.
+    Generator for cryptographically secure random passwords.
     """
-
-    letters = string.ascii_letters
-    digits = string.digits
-    symbols = '!@#$%&^_'
 
     @classmethod
     def generate(cls, length: int = 12) -> str:
         """
-        Generate a random password of specified length.
+        Generate a cryptographically secure random password.
 
         Args:
             length: Length of password to generate (default: 12)
 
         Returns:
-            str: Randomly generated password
+            str: Randomly generated password (different every time)
         """
-        symbols_string = cls.letters + cls.digits + cls.symbols
-        return ''.join((random.choice(symbols_string) for _ in range(length)))
+        return ''.join(secrets.choice(cls.all()) for _ in range(length))
+
+    @classmethod
+    def generate_token(cls, bytes_count: int = 32) -> str:
+        """
+        Generate a random hex token (e.g., for API keys).
+
+        Args:
+            bytes_count: Number of random bytes (default: 32)
+
+        Returns:
+            str: Hexadecimal string of length bytes_count * 2
+        """
+        return secrets.token_hex(bytes_count)
+
+    @classmethod
+    def generate_urlsafe_token(cls, bytes_count: int = 32) -> str:
+        """
+        Generate a URL-safe random token.
+
+        Args:
+            bytes_count: Number of random bytes (default: 32)
+
+        Returns:
+            str: URL-safe base64 encoded string
+        """
+        return secrets.token_urlsafe(bytes_count)

@@ -1,7 +1,8 @@
 # Copyright (©) 2026, Alexander Suvorov. All rights reserved.
 import json
 import os
-from typing import Dict, Optional
+from typing import Dict, Optional, Union
+from pathlib import Path
 
 from smartpasslib.masters.smart_password_master import SmartPasswordMaster
 from smartpasslib.factories.smart_password_factory import SmartPasswordFactory
@@ -15,14 +16,32 @@ class SmartPasswordManager:
     Stores only verification data, not actual passwords or secrets.
     """
 
-    def __init__(self, filename: str = '~/.cases.json'):
+    def __init__(self, filename: Optional[Union[str, Path]] = None):
         """
         Initialize manager with storage file.
 
         Args:
-            filename: Path to JSON storage file (default: ~/.cases.json)
+            filename: Path to JSON storage file.
+                     If None, uses: ~/.config/smart_password_manager/passwords.json
         """
-        self.filename = os.path.expanduser(filename)
+        if filename is None:
+            home = Path.home()
+            config_dir = home / '.config' / 'smart_password_manager'
+            config_dir.mkdir(parents=True, exist_ok=True)
+
+            self.filename = str(config_dir / 'passwords.json')
+
+            old_file = home / '.cases.json'
+            if old_file.exists() and not Path(self.filename).exists():
+                try:
+                    import shutil
+                    shutil.copy2(old_file, self.filename)
+                    old_file.rename(old_file.with_suffix('.json.bak'))
+                except Exception as e:
+                    print(f"Warning: Could not migrate old .cases.json: {e}")
+        else:
+            self.filename = str(Path(filename).expanduser())
+
         self.smart_passwords = self._load_data()
         self.smart_pass_factory = SmartPasswordFactory()
 
@@ -35,6 +54,16 @@ class SmartPasswordManager:
             Dict[str, SmartPassword]: Dictionary mapping public keys to password metadata
         """
         return self.smart_passwords
+
+    @property
+    def file_path(self) -> str:
+        """
+        Get the current configuration file path.
+
+        Returns:
+            str: Path to configuration file
+        """
+        return self.filename
 
     @staticmethod
     def generate_base_password(length: int = 12) -> str:
@@ -149,13 +178,14 @@ class SmartPasswordManager:
             del self.smart_passwords[public_key]
             self._write_data()
         else:
-            raise KeyError("Public Key not found.")
+            raise KeyError(f"Public key not found: {public_key}")
 
     def clear(self):
         """
         Clear all stored password metadata.
         """
         self.smart_passwords = {}
+        self._write_data()
 
     @property
     def password_count(self) -> int:
@@ -175,9 +205,14 @@ class SmartPasswordManager:
             Dict[str, SmartPassword]: Loaded password metadata
         """
         if os.path.isfile(self.filename):
-            with open(self.filename, 'r') as f:
-                data = json.load(f)
-                return {public_key: SmartPassword.from_dict(item) for public_key, item in data.items()}
+            try:
+                with open(self.filename, 'r') as f:
+                    data = json.load(f)
+                    return {public_key: SmartPassword.from_dict(item) for public_key, item in data.items()}
+            except (json.JSONDecodeError, IOError) as e:
+                import warnings
+                warnings.warn(f"Failed to load passwords from {self.filename}: {e}")
+                return {}
         else:
             return {}
 
@@ -185,5 +220,15 @@ class SmartPasswordManager:
         """
         Write passwords metadata to storage file.
         """
-        with open(self.filename, 'w') as f:
-            json.dump({public_key: sp.to_dict() for public_key, sp in self.smart_passwords.items()}, f, indent=4)
+        Path(self.filename).parent.mkdir(parents=True, exist_ok=True)
+
+        try:
+            with open(self.filename, 'w') as f:
+                json.dump(
+                    {public_key: sp.to_dict() for public_key, sp in self.smart_passwords.items()},
+                    f,
+                    indent=4
+                )
+        except IOError as e:
+            import warnings
+            warnings.warn(f"Failed to save passwords to {self.filename}: {e}")

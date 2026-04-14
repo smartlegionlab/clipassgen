@@ -1,14 +1,13 @@
 # Copyright (©) 2026, Alexander Suvorov. All rights reserved.
 import secrets
-import string
+
+from smartpasslib.core.chars import PasswordChars
 
 
-class CodeGenerator:
+class CodeGenerator(PasswordChars):
     """
     Generator for secure codes with guaranteed character sets.
     """
-
-    special_chars = "!@#$%^&*"
 
     @classmethod
     def generate(cls, length: int = 6) -> str:
@@ -27,19 +26,14 @@ class CodeGenerator:
         if length < 4:
             raise ValueError("The code length must be at least 4 characters..")
 
-        lowercase = string.ascii_lowercase
-        uppercase = string.ascii_uppercase
-        digits = string.digits
-
         code = [
-            secrets.choice(lowercase),
-            secrets.choice(uppercase),
-            secrets.choice(digits),
-            secrets.choice(cls.special_chars)
+            secrets.choice(cls.lowercase),
+            secrets.choice(cls.uppercase),
+            secrets.choice(cls.digits),
+            secrets.choice(cls.symbols)
         ]
 
-        all_chars = lowercase + uppercase + digits + cls.special_chars
-        code += [secrets.choice(all_chars) for _ in range(length - 4)]
+        code += [secrets.choice(cls.all()) for _ in range(length - 4)]
 
         secrets.SystemRandom().shuffle(code)
 

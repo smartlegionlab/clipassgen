@@ -1,19 +1,15 @@
 # Copyright (©) 2026, Alexander Suvorov. All rights reserved.
 import secrets
-import string
+
+from smartpasslib.core.chars import PasswordChars
 
 
-class StrongPasswordGenerator:
+class StrongPasswordGenerator(PasswordChars):
     """
     Generator for cryptographically strong random passwords.
 
     Guarantees at least one character from each character class.
     """
-
-    upper_letters = string.ascii_uppercase
-    lower_letters = string.ascii_lowercase
-    digits = string.digits
-    symbols = '!@#$%&^_'
 
     @classmethod
     def generate(cls, length: int = 12) -> str:
@@ -33,13 +29,13 @@ class StrongPasswordGenerator:
             raise ValueError("The length cannot be less than 4.")
 
         result = [
-            secrets.choice(cls.upper_letters),
-            secrets.choice(cls.lower_letters),
+            secrets.choice(cls.lowercase),
+            secrets.choice(cls.uppercase),
             secrets.choice(cls.digits),
             secrets.choice(cls.symbols),
         ]
         result += [
-            secrets.choice(cls.upper_letters + cls.lower_letters + cls.digits + cls.symbols)
+            secrets.choice(cls.all())
             for _ in range(length - 4)
         ]
         secrets.SystemRandom().shuffle(result)
