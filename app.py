@@ -1,5 +1,7 @@
 # Copyright © 2026, Alexander Suvorov
-"""Console Smart Passwords Generator."""
+"""clipassgen (Console Smart Password Generator CLI) - Terminal-based smart password generator with
+deterministic password generation. Generate passwords from secret phrases - same secret always produces
+the same password, no storage required."""
 from clipassgen.app import cli
 
 

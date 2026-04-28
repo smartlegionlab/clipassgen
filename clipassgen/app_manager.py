@@ -45,9 +45,56 @@ class AppManager:
     @classmethod
     def _show_help(cls):
         cls.smart_printer.print_center(text='Help')
-        cls.smart_printer.print_framed(f"CLIPASSGEN {cls.config.version}")
-        print(f"\nFor more information, visit the project page on GitHub: {cls.config.url}")
-        print("=" * 60)
+        print(f"""
+    CLIPASSGEN {cls.config.version} - Console Smart Password Generator
+
+    DECENTRALIZED BY DESIGN:
+    • No cloud, no database, no trust required
+    • Your secrets never leave your device
+    • There is no "forgot password" button — you are in complete control
+    • Works offline — no internet connection needed
+
+    HOW IT WORKS:
+    1. Provide a secret phrase (minimum 12 characters)
+    2. System generates a public key from the secret
+    3. Password is generated deterministically
+    4. Same secret + same length = same password across all platforms
+
+    To generate a password:
+    1. Choose generation mode
+    2. Enter secret phrase (for smart mode)
+    3. Copy the generated password
+
+    GENERATION MODES:
+    • Smart Password     — Deterministic from secret phrase (CROSS-PLATFORM!)
+    • Strong Random      — Cryptographically secure random password
+    • Base Random        — Simple random password
+    • Authentication Code — Short code for 2FA/MFA (4-20 chars)
+
+    SECURITY NOTES:
+    • Passwords are NEVER stored anywhere
+    • Secret phrases must be at least 12 characters
+    • Case-sensitive secret phrases
+    • Lost secret phrase = permanently lost passwords
+    • Public key can be stored for verification
+
+    CROSS-PLATFORM COMPATIBILITY:
+    Same secret + same length = identical passwords on:
+    • Python (Desktop, CLI)
+    • C# (Desktop, CLI)
+    • Web, Android, and all smartpasslib implementations
+
+    COMMAND LINE MODE:
+      clipassgen --smart -s "secret" -l 16
+      clipassgen --strong -l 20
+      clipassgen --code -l 8
+      clipassgen --public -s "secret"
+      clipassgen --verify -s "secret" -k "public_key"
+
+    For more information, visit the project page on GitHub: {cls.config.url}
+
+    """)
+        cls.smart_printer.print_framed(f'Complete documentation: {cls.config.url}')
         input("\nPress Enter to continue...")
 
     @classmethod
