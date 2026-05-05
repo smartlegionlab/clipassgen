@@ -14,7 +14,7 @@ class AppManager:
 
     @classmethod
     def main_menu(cls):
-        cls.smart_printer.show_head(text=f"{cls.config.name} {cls.config.version}")
+        cls.smart_printer.show_head(text=f"{cls.config.name}")
 
         while True:
             cls.smart_printer.print_center('Main Menu:')
@@ -69,7 +69,7 @@ class AppManager:
     • Smart Password     — Deterministic from secret phrase (CROSS-PLATFORM!)
     • Strong Random      — Cryptographically secure random password
     • Base Random        — Simple random password
-    • Authentication Code — Short code for 2FA/MFA (4-20 chars)
+    • Authentication Code — Short code for 2FA/MFA (4-100 chars)
 
     SECURITY NOTES:
     • Passwords are NEVER stored anywhere
@@ -85,11 +85,11 @@ class AppManager:
     • Web, Android, and all smartpasslib implementations
 
     COMMAND LINE MODE:
-      clipassgen --smart -s "secret" -l 16
+      clipassgen --smart -s "your_secret_phrase" -l 16
       clipassgen --strong -l 20
       clipassgen --code -l 8
-      clipassgen --public -s "secret"
-      clipassgen --verify -s "secret" -k "public_key"
+      clipassgen --public -s "your_secret_phrase"
+      clipassgen --verify -s "your_secret_phrase" -k "public_key"
 
     For more information, visit the project page on GitHub: {cls.config.url}
 
@@ -99,13 +99,13 @@ class AppManager:
 
     @classmethod
     def _get_secret(cls):
+        print("\nIMPORTANT: Your secret phrase (minimum 12 characters):")
+        print("• Is case-sensitive")
+        print("• Should be memorable but secure")
+        print("• Will generate the same password every time")
+        print("\nGood examples: 'MyCat🐱Hippo2026' or 'P@ssw0rd!LongSecret'")
+        print("Bad examples: 'password123', 'qwerty', 'mysecret'\n")
         while True:
-            print("\nIMPORTANT: Your secret phrase (minimum 12 characters):")
-            print("• Is case-sensitive")
-            print("• Should be memorable but secure")
-            print("• Will generate the same password every time")
-            print("\nGood examples: 'MyCat🐱Hippo2026' or 'P@ssw0rd!LongSecret'")
-            print("Bad examples: 'password123', 'qwerty', 'mysecret'\n")
 
             secret = getpass.getpass("Enter secret phrase (hidden): ")
 
@@ -126,7 +126,7 @@ class AppManager:
             return secret
 
     @classmethod
-    def _get_length(cls, min_len=12, max_len=1000, default=16):
+    def _get_length(cls, min_len=12, max_len=100, default=16):
         while True:
             prompt = f'Enter length [{min_len}-{max_len}] (default {default}): '
             length_input = input(prompt)
@@ -145,7 +145,7 @@ class AppManager:
                 continue
 
     @classmethod
-    def _get_code_length(cls, min_len=4, max_len=20, default=8):
+    def _get_code_length(cls, min_len=4, max_len=100, default=8):
         while True:
             prompt = f'Enter length [{min_len}-{max_len}] (default {default}): '
             length_input = input(prompt)
@@ -174,7 +174,7 @@ class AppManager:
         print("Same secret + same length = same password every time.\n")
 
         secret = cls._get_secret()
-        length = cls._get_length(min_len=12, max_len=1000, default=16)
+        length = cls._get_length(min_len=12, max_len=100, default=16)
 
         password = cls.smart_password_master.generate_smart_password(
             secret=secret,
@@ -187,7 +187,7 @@ class AppManager:
     @classmethod
     def generate_strong_password(cls):
         cls.smart_printer.print_center(text='Strong Password Generator')
-        length = cls._get_length(min_len=12, max_len=1000, default=16)
+        length = cls._get_length(min_len=12, max_len=100, default=16)
 
         password = cls.smart_password_master.generate_strong_password(length=length)
         cls._show_password(password)
@@ -195,7 +195,7 @@ class AppManager:
     @classmethod
     def generate_base_password(cls):
         cls.smart_printer.print_center(text='Base Password Generator')
-        length = cls._get_length(min_len=12, max_len=1000, default=16)
+        length = cls._get_length(min_len=12, max_len=100, default=16)
 
         password = cls.smart_password_master.generate_base_password(length=length)
         cls._show_password(password)
@@ -203,7 +203,7 @@ class AppManager:
     @classmethod
     def generate_code(cls):
         cls.smart_printer.print_center(text='Authentication Code Generator')
-        length = cls._get_code_length(min_len=4, max_len=20, default=8)
+        length = cls._get_code_length(min_len=4, max_len=100, default=8)
 
         password = cls.smart_password_master.generate_code(length=length)
         cls._show_password(password)

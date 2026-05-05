@@ -1,4 +1,4 @@
-# CliPassGen (Console Smart Password Generator) <sup>v3.0.3</sup>
+# CliPassGen (Console Smart Password Generator) <sup>v4.0.0</sup>
 
 ---
 
@@ -34,11 +34,19 @@ Smart Password Generator stores nothing. Your secrets never leave your device. P
 
 ---
 
-## 🔄 Breaking Change (v3.x.x)
+## 🔄 Breaking Change (v4.0.0)
 
-> **⚠️ This release uses [smartpasslib](https://github.com/smartlegionlab/smartpasslib) v3.x.x, which is NOT backward compatible with v2.x.x**
+> **⚠️ This release uses [smartpasslib](https://github.com/smartlegionlab/smartpasslib) v4.0.0, which is NOT backward compatible with v2.x.x or v3.x.x**
 
-Smart passwords created with v2.x.x or earlier **will be different** when generated with v3.x.x.
+Smart passwords created with v2.x.x or v3.x.x **will be different** when generated with v4.0.0.
+
+**What changed:**
+- Dynamic iterations: private key 15-30 steps (was fixed 30), public key 45-60 steps (was fixed 60)
+- Expanded Google-compatible character set (26 special chars + A-Z + a-z + 0-9)
+- Code length extended: now 4-100 characters (was 4-20)
+- Secret phrases now require minimum 12 characters
+- Key derivation with salt separation ("private"/"public")
+- No secret exposure in iteration logs
 
 📖 **Full migration instructions** → see [MIGRATION.md](https://github.com/smartlegionlab/clipassgen/blob/master/MIGRATION.md)
 
@@ -51,28 +59,29 @@ Smart passwords created with v2.x.x or earlier **will be different** when genera
 - **Deterministic Generation**: Same secret + same length = same password, every time
 - **Memory-Based Security**: Your brain is the only password database
 - **Terminal-First**: Optimized for CLI workflows and scripting
-- **Multi-Mode Generation**: Smart passwords, strong random, base passwords, and auth codes
+- **Multi-Mode Generation**: Smart passwords, strong random, base passwords, auth codes, public keys, verification
 
 **What You Can Do:**
 1. **Generate Smart Passwords**: Deterministic passwords from secret phrases
 2. **Create Public Keys**: Verification keys for secret proof without exposure
-3. **Generate Random Passwords**: Cryptographically secure random generation
-4. **Create Authentication Codes**: Secure codes with character diversity
-5. **Interactive Terminal Mode**: Menu-driven interface for easy use
-6. **Command Line Mode**: Scriptable generation for automation
-7. **Cross-Platform Operation**: Works on any system with Python
-8. **No Dependencies**: Pure Python with smartpasslib core
+3. **Verify Secrets**: Check if a secret matches a stored public key
+4. **Generate Random Passwords**: Cryptographically secure random generation
+5. **Create Authentication Codes**: Secure codes with character diversity
+6. **Interactive Terminal Mode**: Menu-driven interface for easy use
+7. **Command Line Mode**: Scriptable generation for automation
+8. **Cross-Platform Operation**: Works on any system with Python
+9. **No Dependencies**: Pure Python with smartpasslib core
 
 ## Key Features
 
 - **Decentralized & Serverless**: No central database, no cloud lock-in, complete user sovereignty
 - **Deterministic Security**: Identical input → identical output, always
-- **Four Generation Modes**: Smart, Strong, Base, and Code
-- **Public Key Verification**: Generate keys to prove secret knowledge
+- **Six Generation Modes**: Smart, Strong, Base, Code, Public Key, Verify
+- **Public Key Verification**: Generate and verify keys to prove secret knowledge
 - **Interactive & CLI Modes**: Both menu-driven and command-line interfaces
 - **Hidden Input**: Secret phrase entry via getpass (hidden typing)
 - **SmartPrinter Output**: Beautiful centered and framed terminal text
-- **Length Flexibility**: 12-1000 characters for passwords, 4-20 for codes
+- **Length Flexibility**: 12-100 characters for passwords, 4-100 for codes
 - **No Internet Required**: All cryptographic operations local
 
 ## Security Model
@@ -95,16 +104,24 @@ Smart passwords created with v2.x.x or earlier **will be different** when genera
 
 ## Technical Foundation
 
-Powered by **[smartpasslib](https://github.com/smartlegionlab/smartpasslib) v3.x.x+** — The core library for deterministic password generation.
+Powered by **[smartpasslib](https://github.com/smartlegionlab/smartpasslib) v4.0.0+** — The core library for deterministic password generation.
 
-**Key derivation (same as Python/JS/Kotlin/Go/C# versions):**
+**Key derivation (same as Python/JS/Kotlin/Go/C# versions v4.0.0):**
 
-| Key Type    | Iterations | Purpose                                               |
-|-------------|------------|-------------------------------------------------------|
-| Private Key | 30         | Password generation (never stored, never transmitted) |
-| Public Key  | 60         | Verification (stored locally)                         |
+| Key Type    | Iterations              | Purpose                                               |
+|-------------|-------------------------|-------------------------------------------------------|
+| Private Key | 15-30 (dynamic)         | Password generation (never stored, never transmitted) |
+| Public Key  | 45-60 (dynamic)         | Verification (stored locally)                         |
 
-**Character Set:** `abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$&*-_`
+**Character Set (Google-compatible):**
+```
+!@#$%^&*()_+-=[]{};:,.<>?/ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyz
+```
+
+**Validation Rules:**
+- Secret phrase: minimum 12 characters
+- Password length: 12-100 characters
+- Code length: 4-100 characters
 
 **Decentralized Architecture**:
 - No central authority required
@@ -113,17 +130,27 @@ Powered by **[smartpasslib](https://github.com/smartlegionlab/smartpasslib) v3.x
 - Works offline — no internet connection required
 
 **Generation Modes:**
-- **Smart Password**: Deterministic from secret phrase (BREAKING CHANGE in v3.x.x)
+- **Smart Password**: Deterministic from secret phrase (BREAKING CHANGE in v4.0.0)
 - **Strong Password**: Cryptographically secure random generation (unchanged)
 - **Base Password**: Simple random password generation (unchanged)
-- **Authentication Code**: Secure code generation for 2FA/MFA (unchanged)
+- **Authentication Code**: Secure code generation for 2FA/MFA (max length extended to 100)
+- **Public Key**: Generate verification key from secret phrase (NEW)
+- **Verify**: Check secret against stored public key (NEW)
 
 ---
 
 ## Installation
 
 ```bash
-pip install clipassgen==3.0.3
+git clone https://github.com/smartlegionlab/clipassgen
+cd clipassgen
+python app.py
+```
+
+or
+
+```bash
+pip install clipassgen==4.0.0
 ```
 
 ---
@@ -144,10 +171,13 @@ clipassgen --smart -s "MyStrongSecretPhrase2026!" -l 16
 # Strong random password
 clipassgen --strong -l 20
 
-# Authentication code (2FA)
+# Base random password
+clipassgen --base -l 16
+
+# Authentication code (2FA) - now up to 100 chars
 clipassgen --code -l 8
 
-# Generate public key
+# Generate public key from secret
 clipassgen --public -s "MyStrongSecretPhrase2026!"
 
 # Verify secret against public key
@@ -157,9 +187,9 @@ clipassgen --verify -s "MyStrongSecretPhrase2026!" -k "public_key_here"
 ## Security Requirements
 
 ### Secret Phrase
-- **Minimum 12 characters** (enforced)
+- **Minimum 12 characters** (enforced by library)
 - Case-sensitive
-- Use mix of: uppercase, lowercase, numbers, symbols, emoji, or Cyrillic
+- Use mix of: uppercase, lowercase, numbers, symbols
 - Never store digitally
 - **NEVER use your password description as secret phrase**
 
@@ -172,10 +202,15 @@ clipassgen --verify -s "MyStrongSecretPhrase2026!" -k "public_key_here"
 
 ### Weak Secret Examples (avoid)
 ```
+❌ "short"                       — too short, rejected by library
 ❌ "password"                    — dictionary word, too short
 ❌ "1234567890"                  — only digits, too short
 ❌ "qwerty123"                   — keyboard pattern
 ```
+
+### Password Length Requirements
+- Smart/Strong/Base passwords: 12-100 characters
+- Authentication codes: 4-100 characters (was 4-20)
 
 ### Decentralized Nature
 
@@ -229,8 +264,9 @@ CliPassGen produces **identical passwords** to:
 
 | Version          | smartpasslib | Status                   | Migration Required     |
 |------------------|--------------|--------------------------|------------------------|
-| v2.1.6 and below | v2.x.x       | ❌ Deprecated/Unsupported | Must migrate to v3.x.x |
-| v3.x.x+          | v3.x.x       | ✅ Current                | N/A                    |
+| v2.x.x and below | v2.x.x       | ❌ Deprecated/Unsupported | Must migrate to v4.x.x |
+| v3.x.x           | v3.x.x       | ❌ Deprecated/Unsupported | Must migrate to v4.x.x |
+| **v4.0.0+**      | **v4.0.0+**  | ✅ Current                | N/A                    |
 
 ## License
 
@@ -251,4 +287,6 @@ Copyright (©) 2026, Alexander Suvorov
 ### Main Interface
 
 ![Main Interface](https://github.com/smartlegionlab/clipassgen/raw/master/data/images/clipassgen.png)
+
+---
 

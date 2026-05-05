@@ -1,5 +1,5 @@
 # ----------------------------------------------------------------------------------------------------------------------
-# SmartPassLib v3.1.0 - Python smart password library - Cross-platform deterministic password generation
+# SmartPassLib v4.0.0 - Python smart password library - Cross-platform deterministic password generation
 # ----------------------------------------------------------------------------------------------------------------------
 # Cryptographic password generation and management without storage. Generate passwords from secrets,
 # verify knowledge without exposure, manage metadata securely.
@@ -10,15 +10,18 @@
 #
 # Key derivation:
 #
-#  - Private key: 30 iterations of SHA-256 (used for password generation,
-#    never stored anywhere, generated on the fly, upon request)
-#  - Public Key: 60 iterations of SHA-256 (used for verification,
-#    stored locally, does not require secure storage)
+#  - Private key: 15-30 iterations (dynamic, deterministic per secret, never stored)
+#  - Public key: 45-60 iterations (dynamic, deterministic per secret, stored for verification)
 #
 # Secret phrase:
 #   - is not transferred anywhere
 #   - is not stored anywhere
 #   - is required to generate the private key when creating a smart password
+#   - minimum 12 characters (enforced)
+#
+# Password length:
+#   - minimum 12 characters (enforced)
+#   - maximum 100 characters (enforced)
 #
 # ----------------------------------------------------------------------------------------------------------------------
 # Ecosystem:
@@ -47,7 +50,6 @@ Generate passwords from secrets, verify knowledge without exposure, manage metad
 Decentralized by design — no central servers, no cloud dependency, no third-party trust required.
 """
 
-from smartpasslib.factories.smart_password_factory import SmartPasswordFactory
 from smartpasslib.generators.base import BasePasswordGenerator
 from smartpasslib.generators.hash import HashGenerator
 from smartpasslib.generators.key import SmartKeyGenerator
@@ -59,7 +61,7 @@ from smartpasslib.managers.smart_password_manager import SmartPasswordManager
 from smartpasslib.masters.smart_password_master import SmartPasswordMaster
 from smartpasslib.smart_passwords.smart_password import SmartPassword
 
-__version__ = '3.1.0'
+__version__ = '4.0.0'
 __author__ = 'Alexander Suvorov'
 
 __all__ = [
@@ -70,7 +72,6 @@ __all__ = [
     "BasePasswordGenerator",
     "StrongPasswordGenerator",
     "SmartPasswordGenerator",
-    "SmartPasswordFactory",
     "SmartPasswordManager",
     "SmartPassword",
     "CodeGenerator",

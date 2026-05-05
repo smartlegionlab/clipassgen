@@ -21,10 +21,13 @@ class CodeGenerator(PasswordChars):
             str: Generated code
 
         Raises:
-            ValueError: If length is less than 4
+            ValueError: If length is less than 4 or greater than 100
         """
         if length < 4:
-            raise ValueError("The code length must be at least 4 characters..")
+            raise ValueError("The code length must be at least 4 characters")
+
+        if length > 100:
+            raise ValueError("The code length cannot exceed 100 characters")
 
         code = [
             secrets.choice(cls.lowercase),

@@ -17,7 +17,14 @@ class SmartPassword:
             public_key: Public verification key for secret phrase
             description: Service/account description
             length: Password length to generate (default: 12)
+
+        Raises:
+            ValueError: If length is less than 12 or greater than 100
         """
+        if length < 12:
+            raise ValueError("Password length must be at least 12 characters")
+        if length > 100:
+            raise ValueError("Password length cannot exceed 100 characters")
         self._public_key = public_key
         self._description = description
         self._length = length
@@ -58,17 +65,19 @@ class SmartPassword:
 
         Args:
             description: New service/account description (optional)
-            length: New password length (optional, must be >= 1)
+            length: New password length (optional, must be 12-100)
 
         Raises:
-            ValueError: If length is provided and less than 1
+            ValueError: If length is less than 12 or greater than 100
         """
         if description is not None:
             self._description = description
 
         if length is not None:
-            if length < 1:
-                raise ValueError("Password length must be at least 1 character")
+            if length < 12:
+                raise ValueError("Password length must be at least 12 characters")
+            if length > 100:
+                raise ValueError("Password length cannot exceed 100 characters")
             self._length = length
 
     def to_dict(self) -> Dict[str, str | int]:

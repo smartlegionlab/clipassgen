@@ -17,16 +17,18 @@ class StrongPasswordGenerator(PasswordChars):
         Generate strong password with guaranteed character diversity.
 
         Args:
-            length: Password length, minimum 4
+            length: Password length, minimum 12, maximum 100
 
         Returns:
             str: Cryptographically strong password
 
         Raises:
-            ValueError: If length is less than 4
+            ValueError: If length is less than 12 or greater than 100
         """
-        if length < 4:
-            raise ValueError("The length cannot be less than 4.")
+        if length < 12:
+            raise ValueError("Password length must be at least 12 characters")
+        if length > 100:
+            raise ValueError("Password length cannot exceed 100 characters")
 
         result = [
             secrets.choice(cls.lowercase),

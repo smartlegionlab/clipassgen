@@ -19,13 +19,26 @@ class SmartPasswordGenerator(PasswordChars):
         """
         Generate a deterministic smart password from a seed string.
 
+        The same seed and length will always produce the same password
+        across all platforms (Python, C#, Go, JS, Kotlin).
+
         Args:
             seed: String that determines the password (same seed = same password)
-            length: Length of password to generate (default: 12)
+            length: Password length (default: 12, minimum: 12, maximum: 100)
 
         Returns:
             str: Deterministically generated smart password
+
+        Raises:
+            ValueError: If length is less than 12 or greater than 100
         """
+
+        if length < 12:
+            raise ValueError("Password length must be at least 12 characters")
+
+        if length > 100:
+            raise ValueError("Password length cannot exceed 100 characters")
+
         seed = SmartKeyGenerator.generate_private_key(secret=seed)
         result = []
         counter = 0

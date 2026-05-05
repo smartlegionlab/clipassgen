@@ -9,13 +9,9 @@ class UrandomGenerator:
 
     @classmethod
     def generate(cls, size: int = 32) -> bytes:
-        """
-        Generate cryptographically secure random bytes.
-
-        Args:
-            size: Number of bytes to generate (default: 32)
-
-        Returns:
-            bytes: Random bytes from OS cryptographic source
-        """
+        """Generate cryptographically secure random bytes."""
+        if size < 1:
+            raise ValueError("Size must be at least 1 byte")
+        if size > 1024 * 1024:
+            raise ValueError("Size cannot exceed 1 MB")
         return os.urandom(size)

@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "clipassgen"
-version = "3.0.3"
+version = "4.0.0"
 description = "clipassgen (Console Smart Password Generator CLI) - Terminal-based smart password generator with deterministic password generation. Generate passwords from secret phrases - same secret always produces the same password, no storage required."
 authors = [
     {name = "Alexander Suvorov", email = "smartlegionlab@gmail.com"}
@@ -22,7 +22,6 @@ classifiers = [
     "Programming Language :: Python :: 3.12",
     "Operating System :: OS Independent",
     "Topic :: Security",
-    "Intended Audience :: End Users/Desktop",
     "Environment :: Console",
 ]
 dependencies = [

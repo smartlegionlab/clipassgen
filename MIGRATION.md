@@ -1,79 +1,131 @@
-# Migration Guide: v2.x.x to v3.x.x
+# Migration Guide: v2.x.x / v3.x.x to v4.0.0
+
+> **📌 Version Note:** CliPassGen v4.0.0 uses smartpasslib v4.0.0, which introduces breaking changes from all previous versions. All smartpasslib implementations (Python, C#, JS, Go, Kotlin) now share the same algorithm.
 
 ## ⚠️ Breaking Change Notice
 
-**CliPassGen v3.x.x is NOT backward compatible with v2.x.x**
+**CliPassGen v4.0.0 is NOT backward compatible with previous versions**
 
-Smart passwords generated with older versions will be different when generated with v3.x.x due to fundamental changes in the deterministic generation algorithm.
+Passwords generated with older versions cannot be regenerated using v4.0.0 due to fundamental changes in the deterministic generation algorithm.
 
 ---
 
 ## Why the change?
 
-**v3.x.x introduces fundamental improvements:**
+**CliPassGen v4.0.0 (smartpasslib v4.0.0) introduces fundamental improvements:**
 
-- **Cross-platform determinism** — same passwords as Python, Go, Kotlin, JS, C#
-- **Decentralized by design** — no central servers, no cloud dependency
-- **Stronger cryptographic algorithm** — based on SHA-256
-- **Better cross-platform consistency** — identical results across all platforms
+- **Dynamic iteration counts** — deterministic steps vary per secret (15-30 for private, 45-60 for public)
+- **Expanded character set** — Google-compatible symbols (26 special chars + A-Z + a-z + 0-9)
+- **Enhanced key derivation** — salt separation for public/private keys ("private"/"public")
+- **Unified length validation** — password length must be 12-100 characters (was 12-1000)
+- **Input validation** — secret phrases must be at least 12 characters (enforced)
+- **Code length extended** — authentication codes now 4-100 characters (was 4-20)
+- **Maximum security** — no secret exposure in logs or iterations
 
 ---
 
 ## What changed:
 
-- Core algorithm now uses **SHA-256** instead of previous methods
-- Same secret + same length = same password across all platforms
-- Old smart passwords **cannot be regenerated** with new version
-- Random generation modes (`--strong`, `--base`, `--code`) are **unaffected**
+| Aspect                 | Previous versions     | v4.0.0                                |
+|------------------------|-----------------------|---------------------------------------|
+| Private key iterations | Fixed 30              | Dynamic 15-30                         |
+| Public key iterations  | Fixed 60              | Dynamic 45-60                         |
+| Key derivation salt    | None                  | "private"/"public"                    |
+| Character set          | `abc...!@#$&*-_`      | `!@#$%^&*()_+-=[]{};:,.<>?/A-Za-z0-9` |
+| Password max length    | 1000                  | 100                                   |
+| Secret validation      | Min 4 chars           | Min 12 chars (enforced)               |
+| Code max length        | 20                    | 100                                   |
+| Secret in iterations   | Yes (exposed)         | No (secure)                           |
 
 ---
 
 ## Migration Steps
 
-### Step 1: Install old version to retrieve existing passwords
+The migration process is the SAME for all previous versions (v2.x.x, v3.x.x):
+
+### Step 1: Keep your secret phrases
+
+Your secret phrases remain the same.
+
+### Step 2: Retrieve existing passwords using old version
+
+Before upgrading, generate all passwords you need using the old version:
 
 ```bash
-pip install clipassgen==2.1.6
+# Using your current version
+clipassgen --smart -s "your_secret_phrase" -l 16
 ```
 
-### Step 2: Retrieve existing smart passwords
+**Save all retrieved passwords** in a safe place.
 
-For each service, generate the actual password using your secret phrase with the old version. Keep these passwords accessible during migration.
-
-**Note:** Passwords from `--strong`, `--base`, `--code` modes are not affected — no action needed.
-
-### Step 3: Upgrade to v3.x.x
+### Step 3: Upgrade to v4.0.0
 
 ```bash
 pip install --upgrade clipassgen
 ```
 
-### Step 4: Generate new smart passwords
+### Step 4: Generate new passwords
 
-Using the **same secret phrases and lengths**, generate new passwords with the new version.
+Using the **SAME secret phrases and lengths**, generate new passwords:
 
 ```bash
 clipassgen --smart -s "your_secret_phrase" -l 16
 ```
 
-### Step 5: Update your services
+### Step 5: Generate new public keys
 
-Replace old passwords with newly generated ones on each website/service.
+Public keys from previous versions are NOT compatible:
 
-### Step 6: Verify
+```bash
+clipassgen --public -s "your_secret_phrase"
+```
+
+### Step 6: Update your services
+
+Replace old passwords (from Step 2) with newly generated ones (from Step 4) on each website/service.
+
+### Step 7: Update stored public keys
+
+Replace old public keys in your records/backups with new ones.
+
+### Step 8: Verify
 
 - Log in using new passwords
 - Confirm regeneration works (same secret → same password)
 
 ---
 
+## What about random passwords?
+
+**Random generation modes are NOT affected:**
+
+- `--strong` — cryptographically secure random passwords (same as before)
+- `--base` — simple random passwords (same as before)
+
+Only `--smart` (deterministic) mode changed.
+
+---
+
 ## Important Notes
 
-- **No automatic migration** — manual regeneration required for each smart password
-- **Your secret phrases remain the same** — only generated passwords change
-- **Random generation modes are unaffected** — no action needed
-- Old passwords are not compatible with new version
+- **No automatic migration** — manual password regeneration required
+- **Your secret phrases remain the same**
+- **Secret phrases shorter than 12 characters will now be rejected**
+- **Password lengths between 101 and 1000 will now be rejected**
+- **Code lengths between 21 and 100 are now allowed (was max 20)**
+- **Public keys from previous versions are NOT compatible**
+- **Old metadata files are NOT compatible**
 - Test with non-essential accounts first
+
+---
+
+## Rollback
+
+If you need to rollback to previous version:
+
+```bash
+pip install clipassgen==3.0.3
+```
 
 ---
 
@@ -81,4 +133,6 @@ Replace old passwords with newly generated ones on each website/service.
 
 - **Issues**: [GitHub Issues](https://github.com/smartlegionlab/clipassgen/issues)
 - **Core Library Issues**: [smartpasslib Issues](https://github.com/smartlegionlab/smartpasslib/issues)
+
+---
 
