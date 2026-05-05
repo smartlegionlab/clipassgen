@@ -5,4 +5,4 @@ class Config:
     name = 'Console Smart Password Generator'
     url = 'https://github.com/smartlegionlab/clipassgen/'
     copyright_ = 'Copyright © 2026, Alexander Suvorov. All rights reserved.'
-    version = "v3.0.2"
+    version = "v3.0.3"

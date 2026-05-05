@@ -1,4 +1,4 @@
-# CliPassGen (Console Smart Password Generator) <sup>v3.0.2</sup>
+# CliPassGen (Console Smart Password Generator) <sup>v3.0.3</sup>
 
 ---
 
@@ -123,7 +123,7 @@ Powered by **[smartpasslib](https://github.com/smartlegionlab/smartpasslib) v3.x
 ## Installation
 
 ```bash
-pip install clipassgen==3.0.2
+pip install clipassgen==3.0.3
 ```
 
 ---

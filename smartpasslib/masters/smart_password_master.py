@@ -88,7 +88,7 @@ class SmartPasswordMaster:
         Returns:
             str: Private key
         """
-        return SmartKeyGenerator.generate_public_key(secret=secret)
+        return SmartKeyGenerator.generate_private_key(secret=secret)
 
     @classmethod
     def check_public_key(cls, secret: str, public_key: str) -> bool:

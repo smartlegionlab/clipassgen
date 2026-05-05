@@ -1,5 +1,5 @@
 # ----------------------------------------------------------------------------------------------------------------------
-# SmartPassLib v3.0.2 - Python smart password library - Cross-platform deterministic password generation
+# SmartPassLib v3.1.0 - Python smart password library - Cross-platform deterministic password generation
 # ----------------------------------------------------------------------------------------------------------------------
 # Cryptographic password generation and management without storage. Generate passwords from secrets,
 # verify knowledge without exposure, manage metadata securely.
@@ -59,7 +59,7 @@ from smartpasslib.managers.smart_password_manager import SmartPasswordManager
 from smartpasslib.masters.smart_password_master import SmartPasswordMaster
 from smartpasslib.smart_passwords.smart_password import SmartPassword
 
-__version__ = '3.0.2'
+__version__ = '3.1.0'
 __author__ = 'Alexander Suvorov'
 
 __all__ = [
