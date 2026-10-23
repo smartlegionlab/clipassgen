@@ -1,10 +1,10 @@
 # ----------------------------------------------------------------------------------------------------------------------
-# SmartPassLib v4.0.0 - Python smart password library - Cross-platform deterministic password generation
+# SmartPassLib v4.0.1 - Python smart password library - Cross-platform deterministic password generation
 # ----------------------------------------------------------------------------------------------------------------------
 # Cryptographic password generation and management without storage. Generate passwords from secrets,
 # verify knowledge without exposure, manage metadata securely.
 # Same secret phrase + same length = same password across all platforms.
-# Decentralized by design — no central servers, no cloud dependency, no third-party trust required.
+# Decentralized by design - no central servers, no cloud dependency, no third-party trust required.
 #
 # Compatible with SmartPassLib C#/JS/Kotlin/Go implementations
 #
@@ -47,7 +47,7 @@
 """Smart Passwords Library: Cryptographic password generation and management without storage.
 Generate passwords from secrets, verify knowledge without exposure, manage metadata securely.
 
-Decentralized by design — no central servers, no cloud dependency, no third-party trust required.
+Decentralized by design - no central servers, no cloud dependency, no third-party trust required.
 """
 
 from smartpasslib.generators.base import BasePasswordGenerator
@@ -61,7 +61,7 @@ from smartpasslib.managers.smart_password_manager import SmartPasswordManager
 from smartpasslib.masters.smart_password_master import SmartPasswordMaster
 from smartpasslib.smart_passwords.smart_password import SmartPassword
 
-__version__ = '4.0.0'
+__version__ = '4.0.1'
 __author__ = 'Alexander Suvorov'
 
 __all__ = [

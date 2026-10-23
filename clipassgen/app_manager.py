@@ -51,8 +51,8 @@ class AppManager:
     DECENTRALIZED BY DESIGN:
     • No cloud, no database, no trust required
     • Your secrets never leave your device
-    • There is no "forgot password" button — you are in complete control
-    • Works offline — no internet connection needed
+    • There is no "forgot password" button - you are in complete control
+    • Works offline - no internet connection needed
 
     HOW IT WORKS:
     1. Provide a secret phrase (minimum 12 characters)
@@ -66,10 +66,10 @@ class AppManager:
     3. Copy the generated password
 
     GENERATION MODES:
-    • Smart Password     — Deterministic from secret phrase (CROSS-PLATFORM!)
-    • Strong Random      — Cryptographically secure random password
-    • Base Random        — Simple random password
-    • Authentication Code — Short code for 2FA/MFA (4-100 chars)
+    • Smart Password     - Deterministic from secret phrase (CROSS-PLATFORM!)
+    • Strong Random      - Cryptographically secure random password
+    • Base Random        - Simple random password
+    • Authentication Code - Short code for 2FA/MFA (4-100 chars)
 
     SECURITY NOTES:
     • Passwords are NEVER stored anywhere
