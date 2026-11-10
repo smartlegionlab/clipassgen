@@ -23,7 +23,20 @@ def cli():
 
     args = parser.parse_args()
 
-    if not any([args.smart, args.strong, args.base, args.code, args.public, args.verify]) and not args.secret:
+    modes = {
+        "--smart": args.smart,
+        "--strong": args.strong,
+        "--base": args.base,
+        "--code": args.code,
+        "--public": args.public,
+        "--verify": args.verify,
+    }
+    selected = sorted(name for name, used in modes.items() if used)
+    if len(selected) > 1:
+        print(f"Error: {' and '.join(selected)} cannot be combined. Choose only one generation mode.")
+        sys.exit(1)
+
+    if not selected and not args.secret:
         AppManager.main_menu()
         return
 
