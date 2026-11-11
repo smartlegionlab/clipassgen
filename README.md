@@ -1,4 +1,4 @@
-# CliPassGen (Console Smart Password Generator) <sup>v4.0.1</sup>
+# CliPassGen (Console Smart Password Generator)
 
 ---
 
@@ -21,6 +21,7 @@ Smart Password Generator stores nothing. Your secrets never leave your device. P
 [![PyPI format](https://img.shields.io/pypi/format/clipassgen)](https://pypi.org/project/clipassgen)
 [![GitHub stars](https://img.shields.io/github/stars/smartlegionlab/clipassgen?style=social)](https://github.com/smartlegionlab/clipassgen/stargazers)
 [![GitHub forks](https://img.shields.io/github/forks/smartlegionlab/clipassgen?style=social)](https://github.com/smartlegionlab/clipassgen/network/members)
+[![Website](https://img.shields.io/badge/website-smartlegionlab.github.io-blue)](https://smartlegionlab.github.io/projects/clipassgen.html)
 
 ---
 
@@ -84,7 +85,7 @@ Smart Password Generator stores nothing. Your secrets never leave your device. P
 
 Powered by **[smartpasslib](https://github.com/smartlegionlab/smartpasslib) v4.0.1+** - The core library for deterministic password generation.
 
-**Key derivation (same as Python/JS/Kotlin/Go/C#/Rust versions v4.0.1):**
+**Key derivation (same as Python/JS/Kotlin/Go/C#/Rust versions):**
 
 | Key Type    | Iterations              | Purpose                                               |
 |-------------|-------------------------|-------------------------------------------------------|
@@ -128,7 +129,7 @@ python app.py
 or
 
 ```bash
-pip install clipassgen==4.0.1
+pip install clipassgen
 ```
 
 ---
@@ -269,6 +270,4 @@ Copyright (©) 2026, Alexander Suvorov
 **Full legal disclaimer:** See [DISCLAIMER.md](https://github.com/smartlegionlab/clipassgen/blob/master/DISCLAIMER.md)
 
 ---
-
-
 
